@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#ide
+.idea
+
+#Ignore visual studio code extensions.
+.vscode/
+**/.tscache/
