@@ -1,0 +1,66 @@
+{
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order",
+    "stylelint-declaration-strict-value"
+  ],
+  "files": "*.scss",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-sass-guidelines",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "function-no-unknown": null,
+    "scss/operator-no-newline-after": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scale-unlimited/declaration-strict-value": [
+      "color",
+      {
+        "ignoreValues": ["transparent", "inherit", "currentColor"],
+        "disableFix": true
+      }
+    ],
+    "block-closing-brace-newline-after": [
+      "always",
+      {
+        "ignoreAtRules": ["if", "else"]
+      }
+    ],
+    "selector-max-id": 0,
+    "no-descending-specificity": [
+      true,
+      {
+        "ignore": ["selectors-within-list"]
+      }
+    ],
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-alphabetical-order": true,
+    "font-family-no-missing-generic-family-keyword": true,
+    "keyframe-declaration-no-important": true,
+    "max-nesting-depth": 3,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "composes",
+          "compose-with",
+          "print-color-adjust"
+        ]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["export", "import", "global", "local"]
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["attribute", "class"]
+      }
+    ]
+  }
+}
