@@ -14,7 +14,8 @@
     "prettier:fix": "prettier --write --parser scss \"src/**/*.scss\"",
     "stylelint-check": "stylelint-config-prettier-check",
     "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --watch"
   },
   "dependencies": {
     "next": "13.2.1",
@@ -22,6 +23,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -44,6 +47,8 @@
     "eslint-plugin-storybook": "^0.6.11",
     "eslint-webpack-plugin": "^4.0.0",
     "husky": "^8.0.0",
+    "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.4.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",

@@ -16,9 +16,9 @@ export default function rootLayout({
         <html lang="en">
             <head>
                 <meta charSet="utf-8" />
-                <title>Beer app</title>
+                <title>Next Beer app</title>
                 <base href="/" />
-                <meta http-equiv="Cache-Control" content="no-cache, no-store" />
+                <meta httpEquiv="Cache-Control" content="no-cache, no-store" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
@@ -26,10 +26,10 @@ export default function rootLayout({
                 {/* TODO add favicons */}
                 <link
                     rel="icon"
-                    href="assets/static/favicon.png"
+                    href="../assets/static/favicon.png"
                     type="image/png"
                 />
-                <link rel="shortcut icon" href="assets/static/favicon.ico" />
+                <link rel="shortcut icon" href="../assets/static/favicon.ico" />
             </head>
             <body>
                 <main>
