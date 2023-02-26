@@ -229,7 +229,7 @@ describe('Navbar', () => {
 
         render(
             <Navbar
-                isMobileMenuOpen={true}
+                isMobileMenuOpen={false}
                 onMobileMenuOpen={onMobileMenuOpenMock}
                 onMobileMenuClose={onMobileMenuClose}
             />
