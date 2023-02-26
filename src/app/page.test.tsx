@@ -7,7 +7,7 @@ describe('page', () => {
         render(<Home />);
 
         const heading = screen.getByRole('heading', {
-            name: 'Welcome to our Brewery!',
+            name: 'Welcome to our humble Brewery!',
         });
 
         expect(heading).toBeInTheDocument();
@@ -37,11 +37,19 @@ describe('page', () => {
         expect(secondaryAction).toBeInTheDocument();
     });
 
-    it('Should render an accent image', () => {
+    it('Should render an accent image 1', () => {
         render(<Home />);
 
-        const accentImage = screen.getByTestId('accentImage');
+        const accentImage1 = screen.getByTestId('accentImage1');
 
-        expect(accentImage).toBeInTheDocument();
+        expect(accentImage1).toBeInTheDocument();
+    });
+
+    it('Should render an accent image 2', () => {
+        render(<Home />);
+
+        const accentImage2 = screen.getByTestId('accentImage2');
+
+        expect(accentImage2).toBeInTheDocument();
     });
 });
