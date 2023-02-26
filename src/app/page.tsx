@@ -20,7 +20,7 @@ export default function Home() {
                 <Image
                     data-testid="accentImage1"
                     className={styles.homePageImage}
-                    src="/home-1.jpg"
+                    src="/static/home-1.jpg"
                     alt="An image of two beer glasses on coasters on a table and oak barrels on the background."
                     width="500"
                     height="250"
@@ -28,7 +28,7 @@ export default function Home() {
                 <Image
                     data-testid="accentImage2"
                     className={styles.homePageImage}
-                    src="/home-2.jpg"
+                    src="/static/home-2.jpg"
                     alt="A mans hand holding a half full glass of beer with foam in the sunlight."
                     width="500"
                     height="250"

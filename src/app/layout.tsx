@@ -42,6 +42,7 @@ export default function rootLayout({
                             {children}
                         </div>
                     </div>
+                    <div>{/*  TODO footer  */}</div>
                 </main>
             </body>
         </html>

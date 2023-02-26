@@ -5,10 +5,17 @@ export default {
     component: NavBar,
 };
 
+const onMobileMenuOpen = ($event: React.MouseEvent<unknown>) => {
+    console.log('$event', $event);
+};
+const onMobileMenuClose = ($event: React.MouseEvent<unknown>) => {
+    console.log('$event', $event);
+};
+
 export const navigation = () => (
     <NavBar
         isMobileMenuOpen={false}
-        onMobileMenuClose={() => {}}
-        onMobileMenuOpen={() => {}}
+        onMobileMenuClose={onMobileMenuOpen}
+        onMobileMenuOpen={onMobileMenuClose}
     />
 );

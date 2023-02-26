@@ -1,4 +1,4 @@
-'use client'; // TODO check this
+'use client';
 
 import Navbar from '@/app/components/navbar/navbar';
 import { useState } from 'react';

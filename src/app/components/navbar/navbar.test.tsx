@@ -78,7 +78,7 @@ describe('Navbar', () => {
         expect(appLogo).toBeInTheDocument();
     });
 
-    it('Should render the hamburger menu button', () => {
+    it('Should render the hamburger menu base-button', () => {
         render(
             <Navbar
                 isMobileMenuOpen={false}
@@ -92,7 +92,7 @@ describe('Navbar', () => {
         expect(hamburgerMenuIcon).toBeInTheDocument();
     });
 
-    it('Should render the close menu button when the mobile menu is open', () => {
+    it('Should render the close menu base-button when the mobile menu is open', () => {
         render(
             <Navbar
                 isMobileMenuOpen={true}
@@ -206,7 +206,7 @@ describe('Navbar', () => {
         expect(backdrop).not.toBeInTheDocument();
     });
 
-    it('Should close the menu on close button click', () => {
+    it('Should close the menu on close base-button click', () => {
         const onMobileMenuCloseMock = jest.fn();
 
         render(
@@ -224,7 +224,7 @@ describe('Navbar', () => {
         expect(onMobileMenuCloseMock).toHaveBeenCalled();
     });
 
-    it('Should open the menu on open button click', () => {
+    it('Should open the menu on open base-button click', () => {
         const onMobileMenuOpenMock = jest.fn();
 
         render(
