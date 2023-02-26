@@ -1,16 +1,6 @@
 import Link from 'next/link';
 import { Beer } from '@/app/models/beer.model';
-
-async function GetBeers() {
-    const res = await fetch(
-        'https://api.punkapi.com/v2/beers?page=1&per_page=10',
-        { cache: 'no-store' } // Will make a request and not cache it
-    );
-
-    const data = (await res.json()) as ReadonlyArray<Beer>;
-
-    return data;
-}
+import { GetBeers } from '@/app/services/beer.service';
 
 export default async function BeersPage() {
     const beers = await GetBeers();

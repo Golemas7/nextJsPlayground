@@ -1,16 +1,4 @@
-import { Beer } from '@/app/models/beer.model';
-
-async function GetSingleBeer(beerId: string) {
-    const res = await fetch(`https://api.punkapi.com/v2/beers?ids=${beerId}`, {
-        next: {
-            revalidate: 10, // Revalidate every 10s
-        },
-    });
-
-    const data = (await res.json()) as ReadonlyArray<Beer>;
-
-    return data && data[0];
-}
+import { GetSingleBeer } from '@/app/services/beer.service';
 
 export default async function SingleBeerPage({
     params,
