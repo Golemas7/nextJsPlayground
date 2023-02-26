@@ -1,6 +1,6 @@
 import '../styles/styles.scss';
 import styles from './layout.module.scss';
-import Link from 'next/link';
+import Navbar from '@/app/components/navbar';
 
 export const metadata = {
     title: 'Next Beer app',
@@ -34,10 +34,9 @@ export default function rootLayout({
             </head>
             <body>
                 <main>
-                    <nav>
-                        <Link href="/">Home</Link>
-                        <Link href="/beers">Beers</Link>
-                    </nav>
+                    <header role="banner">
+                        <Navbar />
+                    </header>
                     <div className={styles.content}>
                         <div className={styles.content__main} role="main">
                             {children}

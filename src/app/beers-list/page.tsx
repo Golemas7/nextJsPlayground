@@ -12,7 +12,7 @@ async function GetBeers() {
     return data;
 }
 
-export default async function BeersPage() {
+export default async function BeersListPage() {
     const beers = await GetBeers();
 
     return (

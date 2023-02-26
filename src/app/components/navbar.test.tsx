@@ -27,11 +27,21 @@ describe('Navbar', () => {
         expect(beersLink).toBeInTheDocument();
     });
 
-    it('Renders the Beers list link', () => {
+    it('Renders the List of beers link', () => {
         render(<Navbar />);
 
-        const beersListLink = screen.getByRole('link', { name: 'Beers list' });
+        const beersListLink = screen.getByRole('link', {
+            name: 'List of beers',
+        });
 
         expect(beersListLink).toBeInTheDocument();
+    });
+
+    it('Renders the app logo', () => {
+        render(<Navbar />);
+
+        const appLogo = screen.getByTestId('appLogo');
+
+        expect(appLogo).toBeInTheDocument();
     });
 });

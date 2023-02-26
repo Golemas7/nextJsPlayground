@@ -1,4 +1,4 @@
-import { Beer } from '@/app/beers/models/beer.model';
+import { Beer } from '@/app/models/beer.model';
 
 async function GetSingleBeer(beerId: string) {
     const res = await fetch(`https://api.punkapi.com/v2/beers?ids=${beerId}`, {
