@@ -7,6 +7,7 @@ export const metadata = {
     description: 'An awesome Beer app',
 };
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export default function rootLayout({
     children,
 }: {
@@ -35,7 +36,7 @@ export default function rootLayout({
                 <main>
                     <nav>
                         <Link href="/">Home</Link>
-                        <Link href="/notes">Notes</Link>
+                        <Link href="/beers">Beers</Link>
                     </nav>
                     <div className={styles.content}>
                         <div className={styles.content__main} role="main">

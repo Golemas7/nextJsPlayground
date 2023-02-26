@@ -3,7 +3,7 @@
 import styles from './page.module.scss';
 // const inter = Inter({ subsets: ['latin'] });
 
-export default function home() {
+export default function Home() {
     return (
         <div>
             <h1 className={styles.title}>Home page</h1>
