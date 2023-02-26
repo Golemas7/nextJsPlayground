@@ -1,0 +1,20 @@
+@use '../variables/index' as variables;
+
+@mixin flex-display($direction: null, $align-center: null, $max-width: true) {
+  display: flex;
+  flex: 1;
+
+  @if $max-width {
+    max-width: 100%;
+  }
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $align-center {
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+}

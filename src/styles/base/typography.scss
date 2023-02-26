@@ -1,0 +1,15 @@
+@use '../utils/index' as utils;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: utils.$base-font-size;
+}
+
+html,
+body {
+  color: utils.$color-text-default;
+  font-family: utils.$font-primary;
+}

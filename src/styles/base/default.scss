@@ -1,0 +1,50 @@
+@use '../utils/index' as utils;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  background-color: utils.$color-background;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+svg {
+  display: block;
+}
+
+hr {
+  height: 0.1rem;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+@media print {
+  html,
+  body {
+    background-color: utils.$unset;
+  }
+
+  @page {
+    margin: 1rem 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,17 @@
+@use 'colors';
+
+$page-frame: 144rem; // Standard desktop
+$padding-page-frame: 1.6rem;
+$base-border-radius: 0.3rem;
+$content-container-width: 80rem;
+
+// Breakpoints
+$breakpoint-tablet-portrait: 768;
+$breakpoint-tablet-landscape: 1024;
+
+// z-indexes
+$z-index-base: 1;
+
+// Spacings
+$one-third: 33.3333%;
+$two-thirds: 66.6667%;

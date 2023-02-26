@@ -1,0 +1,32 @@
+@use '../styles/utils/index' as utils;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding-top: 6rem;
+
+  &__main {
+    @include utils.flex-display(column);
+
+    margin: 0 auto;
+    max-width: utils.$page-frame;
+    padding: 0 utils.$padding-page-frame;
+    position: relative;
+    width: 100%;
+  }
+
+  &__snackbar {
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+    pointer-events: auto;
+  }
+}
+
+@media print {
+  .content {
+    padding: 0;
+  }
+}
