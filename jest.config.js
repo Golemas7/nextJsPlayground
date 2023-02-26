@@ -20,6 +20,7 @@ const customJestConfig = {
     // For example:
 
     moduleNameMapper: {
+        '^.+\\.(svg)$': '<rootDir>/__mocks__/svg.js',
         '@/(.*)$': '<rootDir>/src/$1',
     },
     testEnvironment: 'jest-environment-jsdom',

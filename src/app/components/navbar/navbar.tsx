@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-// import HamburgerMenuSvg from '../../../assets/svg/menu-hamburger.svg';
-// import CloseSvg from '../../../assets/svg/close.svg';
+import HamburgerMenuSvg from '../../../assets/svg/menu-hamburger.svg';
+import CloseSvg from '../../../assets/svg/close.svg';
 
 import styles from './navbar.module.scss';
 
@@ -101,7 +101,7 @@ export default function Navbar({
                         className={styles.mainNavMobileNavContainer}
                         onClick={($event) => onMobileMenuOpen($event)}
                     >
-                        {/* <HamburgerMenuSvg className={styles.mainNavMobileNav} />*/}
+                        <HamburgerMenuSvg className={styles.mainNavMobileNav} />
                     </button>
                 )}
 
@@ -111,7 +111,7 @@ export default function Navbar({
                         className={styles.mainNavMobileNavCloseButton}
                         onClick={($event) => onMobileMenuClose($event)}
                     >
-                        {/* <CloseSvg />*/}
+                        <CloseSvg />
                     </button>
                 )}
             </div>
