@@ -19,8 +19,12 @@ $color-text-default: colors.$color-black;
 $font-primary: roboto, sans-serif;
 
 // Letter spacing
+$letter-spacing-md: 0.01rem;
 
 // Font weights
+$font-weight-light: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
 
 // Line heights
 $base-line-height: 1;

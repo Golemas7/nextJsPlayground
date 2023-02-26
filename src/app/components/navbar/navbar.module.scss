@@ -1,0 +1,186 @@
+@use '../../../styles/utils/index' as utils;
+
+.main-nav {
+  $_this: &;
+  $_mobile-nav-icon-width: 2.7rem;
+
+  display: flex;
+  height: utils.$toolbar-height;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: utils.$page-frame;
+  padding: 0 utils.$padding-page-frame;
+  position: relative;
+  width: 100%;
+
+  &__row {
+    display: flex;
+    width: 100%;
+
+    &--open {
+      @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+        flex-direction: column;
+        z-index: utils.$z-index-base;
+      }
+    }
+  }
+
+  &__col {
+    $this: &;
+
+    display: flex;
+    flex-grow: 1;
+
+    &--m {
+      flex-basis: 40%;
+      width: 40%;
+    }
+
+    &--s {
+      flex-basis: 30%;
+      width: 30%;
+    }
+
+    &--main-nav-bar {
+      /* stylelint-disable max-nesting-depth */
+      &:not(#{$this}--open) {
+        @include utils.respond-to(
+          utils.$breakpoint-tablet-portrait,
+                    max
+                ) {
+          display: none;
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+    }
+
+    &--open {
+      @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+        display: block;
+        justify-content: flex-start;
+        margin-top: 4rem;
+        width: 100%;
+      }
+    }
+  }
+
+  &__list {
+    @include utils.reset-list-style;
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &--large {
+      flex-grow: 1;
+    }
+  }
+
+  &__list-item {
+    @include utils.respond-to(utils.$breakpoint-tablet-portrait + 1, min) {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      &:not(:last-child) {
+        margin-right: 2.9rem;
+      }
+    }
+  }
+
+  &__link {
+    align-items: center;
+    border-bottom: utils.$border-link-thickness solid transparent;
+    color: utils.$color-white;
+    display: flex;
+    letter-spacing: utils.$letter-spacing-md;
+    text-decoration: none;
+
+    @include utils.respond-to(
+      (utils.$breakpoint-tablet-landscape + 1),
+            min
+        ) {
+      font-size: utils.$font-size-md;
+    }
+
+    @include utils.respond-to(utils.$breakpoint-tablet-landscape, max) {
+      font-size: utils.$base-font-size;
+    }
+
+    @include utils.respond-to(
+      (utils.$breakpoint-tablet-portrait + 1),
+            min
+        ) {
+      height: 100%;
+    }
+
+    @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+      @include utils.navigation-link-mobile;
+    }
+
+    &:active,
+    &:hover,
+    &--active {
+      border-color: utils.$color-focus;
+      color: utils.$color-focus;
+    }
+  }
+
+  &__app-logo {
+    align-items: center;
+    align-self: center;
+    display: flex;
+    height: 5rem;
+  }
+
+  @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+    &__mobile-nav {
+      display: block;
+      height: 1.4rem;
+      width: $_mobile-nav-icon-width;
+    }
+
+    &__mobile-nav-container {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      width: $_mobile-nav-icon-width;
+    }
+
+    &__mobile-nav-close-button {
+      padding: 0.9rem;
+      position: absolute;
+      right: 1.3rem;
+      top: 1.4rem;
+      z-index: utils.$z-index-close-button;
+    }
+
+    &__mobile-backdrop {
+      background-color: utils.$color-grey-100;
+      height: 100vh;
+      left: 0;
+      position: fixed;
+      width: 100vw;
+    }
+
+    &--open {
+      flex-direction: column;
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
+
+  @include utils.respond-to(utils.$breakpoint-tablet-portrait + 1, min) {
+    &__mobile-nav,
+    &__mobile-nav-container,
+    &__mobile-nav-close-button,
+    &__mobile-backdrop {
+      display: none;
+    }
+  }
+}

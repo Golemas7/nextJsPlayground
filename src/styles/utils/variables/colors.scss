@@ -2,7 +2,15 @@
 $color-white: #fff;
 $color-black: #000;
 
+$color-grey-950: #f2f2f2;
+$color-grey-550: #8c8c8c;
+$color-grey-100: #19191a;
+
+$color-yellow-500: #ffd700;
+
 // Specific colors
-$color-background: $color-white;
+$color-background: $color-grey-950;
+
+$color-focus: $color-yellow-500;
 
 $unset: unset;

@@ -23,6 +23,19 @@
     margin-bottom: 1rem;
     pointer-events: auto;
   }
+
+  &__toolbar {
+    background-color: utils.$color-grey-100;
+    box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 8%);
+    height: utils.$toolbar-height;
+    position: fixed;
+    width: 100%;
+    z-index: utils.$z-index-toolbar;
+
+    &--loading {
+      visibility: hidden;
+    }
+  }
 }
 
 @media print {

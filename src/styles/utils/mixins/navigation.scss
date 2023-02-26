@@ -1,0 +1,30 @@
+@use '../variables/index' as variables;
+
+@mixin navigation-link-mobile() {
+  $_mobile-link-margin: 1.6rem;
+
+  border-bottom: 0;
+  font-size: variables.$font-size-md;
+  margin-bottom: $_mobile-link-margin;
+  margin-left: -$_mobile-link-margin;
+  padding: 0.8rem 3rem;
+  text-transform: uppercase;
+
+  &--active {
+    &::before {
+      @include mobile-menu-marker;
+    }
+  }
+}
+
+@mixin mobile-menu-marker() {
+  $_margin-marker: 3rem;
+
+  background-color: variables.$color-focus;
+  content: '';
+  display: block;
+  height: 1.4rem;
+  margin-left: -$_margin-marker;
+  margin-right: $_margin-marker - variables.$border-link-thickness;
+  width: variables.$border-link-thickness;
+}
