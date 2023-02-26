@@ -52,7 +52,27 @@ describe('BaseButton', () => {
         expect(button).toBeInTheDocument();
     });
 
-    it('Should add base-button--small class if size is passed as small', () => {});
+    it('Should add base-button--small class if size is passed as small', () => {
+        render(
+            <BaseButton title="Test" size="small" onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
 
-    it('Should add base-button--large class if size is passed as large', () => {});
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveClass('baseButtonSmall');
+    });
+
+    it('Should add base-button--large class if size is passed as large', () => {
+        render(
+            <BaseButton title="Test" size="large" onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
+
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveClass('baseButtonLarge');
+    });
 });

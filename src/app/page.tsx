@@ -18,7 +18,9 @@ export default function Home() {
                     and try it!
                 </span>
 
-                <HomepageActions className={styles.homePageActions} />
+                <div data-testid="callToActionBlock">
+                    <HomepageActions className={styles.homePageActions} />
+                </div>
             </div>
             <div className={styles.homePageColumn}>
                 <Image

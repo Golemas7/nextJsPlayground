@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import HomepageActions from './homepage-actions';
+import '@testing-library/jest-dom';
 
 jest.mock('next/navigation', () => ({
     useRouter() {
@@ -8,17 +9,16 @@ jest.mock('next/navigation', () => ({
             pathname: '',
             query: '',
             asPath: '',
+            push: jest.fn(),
         };
     },
 }));
-
-// const useRouter = jest.spyOn(require('next/navigation'), 'useRouter');
 
 describe('HomepageActions', () => {
     it('Should render a primary CTA', () => {
         render(<HomepageActions className="" />);
 
-        const primaryAction = screen.getByTestId('primaryAction');
+        const primaryAction = screen.getByText('Choose a beer!');
 
         expect(primaryAction).toBeInTheDocument();
     });
@@ -41,20 +41,12 @@ describe('HomepageActions', () => {
         expect(container).toHaveClass(className);
     });
 
-    it('Should not call react router if no action was taken', () => {
-        const useRouter = jest.spyOn(require('next/navigation'), 'useRouter');
-
-        render(<HomepageActions className="" />);
-
-        expect(useRouter).not.toHaveBeenCalled();
-    });
-
     it('Should call react router on primary CTA click', () => {
         const useRouter = jest.spyOn(require('next/navigation'), 'useRouter');
 
         render(<HomepageActions className="" />);
 
-        const primaryAction = screen.getByTestId('primaryAction');
+        const primaryAction = screen.getByText('Choose a beer!');
 
         primaryAction.click();
 

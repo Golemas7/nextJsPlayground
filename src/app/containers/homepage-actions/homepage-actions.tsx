@@ -5,7 +5,7 @@ import BaseButton from '@/app/components/base-button/base-button';
 import { useRouter } from 'next/navigation';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 
-const handleOnClick = (
+export const handleOnClick = (
     $event: React.MouseEvent<unknown>,
     router: AppRouterInstance
 ) => {
