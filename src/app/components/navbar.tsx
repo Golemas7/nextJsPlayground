@@ -7,7 +7,7 @@ export default function Navbar() {
             <div>
                 <div>
                     <Image
-                        data-testId="appLogo"
+                        data-testid="appLogo"
                         src="/logo.png"
                         alt="A pint of beer with foam at the top that is running down its side."
                         height="64"
