@@ -1,1 +1,46 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.base-button {
+  background-color: utils.$color-primary;
+  border: 0.1rem solid utils.$color-primary;
+  border-radius: utils.$base-border-radius;
+  color: utils.$color-white;
+  cursor: pointer;
+  display: block;
+  font-family: utils.$font-primary;
+  font-size: utils.$base-font-size;
+  font-weight: utils.$font-weight-bold;
+  letter-spacing: utils.$letter-spacing-md;
+  line-height: 1.15;
+  padding: 1rem;
+  text-decoration: none;
+  width: max-content;
+
+  &:focus {
+    outline: utils.$color-black solid auto;
+  }
+
+  &:active,
+  &:hover {
+    background-color: utils.$color-focus;
+    border-color: utils.$color-primary;
+    color: utils.$color-primary;
+  }
+
+  &:disabled {
+    background-color: utils.$color-grey-850;
+    border-color: utils.$color-grey-850;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--small {
+    font-size: utils.$font-size-s;
+  }
+
+  &--large {
+    border-radius: 0.9rem;
+    font-size: utils.$font-size-lg-xl;
+    padding: 1.2rem;
+  }
+}

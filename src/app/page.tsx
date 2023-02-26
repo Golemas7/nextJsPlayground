@@ -1,6 +1,8 @@
 import styles from './page.module.scss';
 import Image from 'next/image';
 
+import HomepageActions from './containers/homepage-actions/homepage-actions';
+
 export default function Home() {
     return (
         <div className={styles.homePage}>
@@ -15,6 +17,8 @@ export default function Home() {
                     Finest drinks since King Arthur. Don&apos;t believe us? Come
                     and try it!
                 </span>
+
+                <HomepageActions className={styles.homePageActions} />
             </div>
             <div className={styles.homePageColumn}>
                 <Image

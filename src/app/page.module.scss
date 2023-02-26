@@ -8,8 +8,9 @@
     font-family: utils.$font-secondary;
     font-size: utils.$font-size-presentation;
     font-weight: bold;
-    max-width: 60rem;
+    margin-bottom: 3.5rem;
     margin-top: 20rem;
+    max-width: 60rem;
   }
 
   &__sub-title {
@@ -41,5 +42,9 @@
       position: relative;
       top: -10rem;
     }
+  }
+
+  &__actions {
+    margin-top: 8rem;
   }
 }

@@ -5,4 +5,10 @@ export default {
     component: BaseButton,
 };
 
-export const baseButton = () => <BaseButton>Content</BaseButton>;
+const onClickMock = () => {};
+
+export const baseButton = () => (
+    <BaseButton title="Content" onClick={onClickMock}>
+        Content
+    </BaseButton>
+);

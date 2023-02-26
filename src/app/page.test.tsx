@@ -2,6 +2,17 @@ import { render, screen } from '@testing-library/react';
 import Home from './page';
 import '@testing-library/jest-dom';
 
+jest.mock('next/navigation', () => ({
+    useRouter() {
+        return {
+            route: '/',
+            pathname: '',
+            query: '',
+            asPath: '',
+        };
+    },
+}));
+
 describe('page', () => {
     it('Should renders a title', () => {
         render(<Home />);
@@ -21,20 +32,12 @@ describe('page', () => {
         expect(subTitle).toBeInTheDocument();
     });
 
-    it('Should render a primary CTA', () => {
+    it('Should render actions block', () => {
         render(<Home />);
 
-        const primaryAction = screen.getByTestId('primaryAction');
+        const callToActionBlock = screen.getByTestId('callToActionBlock');
 
-        expect(primaryAction).toBeInTheDocument();
-    });
-
-    it('Should render a secondary CTA', () => {
-        render(<Home />);
-
-        const secondaryAction = screen.getByTestId('secondaryAction');
-
-        expect(secondaryAction).toBeInTheDocument();
+        expect(callToActionBlock).toBeInTheDocument();
     });
 
     it('Should render an accent image 1', () => {
