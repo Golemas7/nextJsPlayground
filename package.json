@@ -15,7 +15,8 @@
     "stylelint-check": "stylelint-config-prettier-check",
     "pre-commit": "lint-staged",
     "prepare": "husky install",
-    "test": "jest --watch",
+    "test": "jest",
+    "test-live": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
