@@ -1,14 +1,16 @@
 import { GetBeers } from '@/app/services/beer.service';
 import BaseCard from '@/app/components/base-card/base-card';
 
+import styles from './page.module.scss';
+
 export default async function BeersPage() {
     const beers = await GetBeers({ page: 1, perPage: 8 });
 
     return (
-        <div>
-            <h1>Beers</h1>
+        <div className={styles.beersPage}>
+            <h1 className={styles.beersPageTitle}>Beers</h1>
 
-            <div>
+            <div className={styles.beersPageCards}>
                 {beers?.map((beer) => (
                     <BaseCard
                         key={beer.id}

@@ -1,1 +1,24 @@
-// Placeholder
+@use '../../styles/utils/index' as utils;
+
+.beers-page {
+  // TODO move to mixin
+  &__title {
+    font-family: utils.$font-secondary;
+    font-size: utils.$font-size-xxxl;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-rows: repeat(3, 25rem);
+    grid-template-columns: repeat(3, 34%);
+    row-gap: 2rem;
+
+    @include utils.respond-to(utils.$breakpoint-desktop, max) {
+      grid-template-columns: repeat(2, 50%);
+    }
+
+    @include utils.respond-to(utils.$breakpoint-tablet-landscape, max) {
+      grid-template-columns: repeat(1, 100%);
+    }
+  }
+}
