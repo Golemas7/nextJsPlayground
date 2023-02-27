@@ -43,7 +43,6 @@
   border: 0.1rem solid utils.$color-primary;
   display: flex;
   flex-direction: row;
-  max-width: 45rem;
   overflow: hidden;
   position: relative;
 
@@ -69,9 +68,17 @@
   }
 
   &__inner-container {
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
     padding: $_padding-inner;
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 
   &__image-container {
@@ -80,9 +87,22 @@
     border-radius: utils.$base-border-radius 0 0 utils.$base-border-radius;
     display: flex;
     flex-shrink: 0;
+    height: 100%;
     justify-content: center;
-    width: 20rem;
     overflow: hidden;
+    width: 20rem;
+
+    @include utils.respond-to(utils.$breakpoint-tablet-landscape, max) {
+      width: 15rem;
+    }
+
+    @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+      width: 20rem;
+    }
+
+    @include utils.respond-to(utils.$breakpoint-mobile-portrait, max) {
+      width: 15rem;
+    }
   }
 
   &__image {
@@ -102,11 +122,13 @@
 
   &__title {
     font-size: utils.$font-size-lg-xl;
-  }
 
-  &__additional-text {
-    bottom: $_padding-inner;
-    justify-self: flex-end;
-    position: absolute;
+    @include utils.respond-to(utils.$breakpoint-tablet-landscape, max) {
+      font-size: utils.$font-size-lg;
+    }
+
+    @include utils.respond-to(utils.$breakpoint-mobile-portrait, max) {
+      font-size: utils.$font-size-md-lg;
+    }
   }
 }

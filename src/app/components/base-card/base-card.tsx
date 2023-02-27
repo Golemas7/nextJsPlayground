@@ -34,10 +34,12 @@ export default function BaseCard({
                 />
             </div>
             <div className={styles.baseCardInnerContainer}>
-                <h3 className={styles.baseCardTitle}>{title}</h3>
-                <p data-testid="content" className={styles.baseCardContent}>
-                    {content}
-                </p>
+                <div className={styles.baseCardContentWrapper}>
+                    <h3 className={styles.baseCardTitle}>{title}</h3>
+                    <p data-testid="content" className={styles.baseCardContent}>
+                        {content}
+                    </p>
+                </div>
                 <span className={styles.baseCardAdditionalText}>Read more</span>
             </div>
         </Link>
