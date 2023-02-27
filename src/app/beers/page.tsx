@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { Beer } from '@/app/models/beer.model';
 import { GetBeers } from '@/app/services/beer.service';
+import BaseCard from '@/app/components/base-card/base-card';
 
 export default async function BeersPage() {
     const beers = await GetBeers({ page: 1, perPage: 6 });
@@ -11,24 +10,16 @@ export default async function BeersPage() {
 
             <div>
                 {beers?.map((beer) => (
-                    <BeerCard key={beer.id} beer={beer} />
+                    <BaseCard
+                        key={beer.id}
+                        id={beer.id}
+                        title={beer.name}
+                        content={beer.tagline}
+                        imageSrc={beer.image_url}
+                        imageAlt="An image of a beer."
+                    />
                 ))}
             </div>
         </div>
-    );
-}
-
-function BeerCard({ beer }: { beer: Beer }) {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const { id, name, tagline, first_brewed } = beer || {};
-
-    return (
-        <Link href={`/beers/${id}`}>
-            <div>
-                <h2>{name}</h2>
-                <h5>{tagline}</h5>
-                <p>{first_brewed}</p>
-            </div>
-        </Link>
     );
 }

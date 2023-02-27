@@ -8,6 +8,9 @@ const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles'), './src/styles'],
     },
+    images: {
+        domains: ['images.punkapi.com'],
+    },
     webpack: (config) => {
         // camelCase style names from css modules
         config.module.rules

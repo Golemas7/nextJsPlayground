@@ -5,4 +5,12 @@ export default {
     component: BaseCard,
 };
 
-export const baseCard = () => <BaseCard />;
+const requiredProps = {
+    id: 1,
+    imageSrc: '/',
+    imageAlt: 'Alt text',
+    title: 'Test title',
+    content: 'Test content',
+};
+
+export const baseCard = () => <BaseCard {...requiredProps} />;
