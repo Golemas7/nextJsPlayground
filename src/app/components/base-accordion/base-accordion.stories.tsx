@@ -5,4 +5,15 @@ export default {
     component: BaseAccordion,
 };
 
-export const baseAccordion = () => <BaseAccordion>Content</BaseAccordion>;
+const onClick = () => {};
+
+export const baseAccordion = () => (
+    <BaseAccordion
+        onClick={onClick}
+        isOpen={false}
+        wasOpen={false}
+        title="Title"
+    >
+        Content
+    </BaseAccordion>
+);

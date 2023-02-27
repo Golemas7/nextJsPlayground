@@ -3,7 +3,7 @@ import { Beer } from '@/app/models/beer.model';
 import { GetBeers } from '@/app/services/beer.service';
 
 export default async function BeersPage() {
-    const beers = await GetBeers();
+    const beers = await GetBeers({ page: 1, perPage: 6 });
 
     return (
         <div>

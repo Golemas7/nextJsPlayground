@@ -8,21 +8,26 @@ export default function BaseButton({
     title,
     size = 'medium',
     className,
+    asLink,
     onClick,
+    dataTestId,
 }: {
     children: ReactNode;
     title: string;
     size?: BaseButtonSizes;
     className?: string;
+    asLink?: boolean;
     onClick: ($event: React.MouseEvent<unknown>) => void;
+    dataTestId?: string;
 }) {
     return (
         <button
+            data-testid={dataTestId}
             className={`${styles.baseButton} ${
                 size === 'small' ? styles.baseButtonSmall : ''
             } ${size === 'large' ? styles.baseButtonLarge : ''} ${
                 className ? className : ''
-            }`}
+            } ${asLink ? styles.baseButtonAsLink : ''}`}
             title={title}
             onClick={($event) => onClick($event)}
         >

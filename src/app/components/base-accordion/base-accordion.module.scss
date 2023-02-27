@@ -1,1 +1,63 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.base-accordion {
+  @keyframes animate-rotation-forward {
+    0% {
+      transform: rotateZ(90deg);
+    }
+
+    100% {
+      transform: rotateZ(270deg);
+    }
+  }
+
+  @keyframes animate-rotation-back {
+    0% {
+      transform: rotateZ(270deg);
+    }
+
+    100% {
+      transform: rotateZ(90deg);
+    }
+  }
+
+  $_this: &;
+
+  border-bottom: 0.1rem solid utils.$color-primary;
+
+  &:focus {
+    outline: utils.$color-black solid auto;
+  }
+
+  &__heading-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &:active,
+    &:hover {
+      color: utils.$color-orange-500;
+    }
+  }
+
+  &__chevron {
+    font-size: utils.$font-size-lg;
+    transform: rotateZ(90deg);
+
+    &--open {
+      animation-duration: 0.25s;
+      animation-fill-mode: forwards;
+      animation-name: animate-rotation-forward;
+    }
+
+    &--close {
+      animation-duration: 0.25s;
+      animation-fill-mode: forwards;
+      animation-name: animate-rotation-back;
+    }
+  }
+
+  &__content {
+    padding: 1.6rem 0;
+  }
+}

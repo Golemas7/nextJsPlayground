@@ -1,0 +1,13 @@
+@use '../../styles/utils/index' as utils;
+
+.beers-list-page {
+  &__title {
+    font-family: utils.$font-secondary;
+    font-size: utils.$font-size-xxxl;
+  }
+
+  &__content {
+    margin: 8rem 0;
+    max-width: 60rem;
+  }
+}

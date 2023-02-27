@@ -12,4 +12,26 @@
     font-size: utils.$font-size-lg-xl;
     padding: 1.2rem;
   }
+
+  &--as-link {
+    background: utils.$none;
+    border: utils.$none;
+    padding: 0;
+    color: utils.$color-primary;
+
+    &:focus {
+      outline: utils.$color-black solid auto;
+    }
+
+    &:active,
+    &:hover {
+      background: utils.$none;
+      color: utils.$color-primary;
+    }
+
+    &:disabled {
+      background: utils.$none;
+      color: utils.$color-grey-850;
+    }
+  }
 }

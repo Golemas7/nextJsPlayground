@@ -3,12 +3,13 @@
 @use '../variables/global' as global;
 
 @mixin base-button-styles() {
+  align-items: center;
   background-color: colors.$color-primary;
-  border: 0.1rem solid colors.$color-primary;
   border-radius: global.$base-border-radius;
+  border: 0.1rem solid colors.$color-primary;
   color: colors.$color-white;
   cursor: pointer;
-  display: block;
+  display: flex;
   font-family: typography.$font-primary;
   font-size: typography.$base-font-size;
   font-weight: typography.$font-weight-bold;

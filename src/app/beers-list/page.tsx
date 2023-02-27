@@ -1,34 +1,21 @@
-import Link from 'next/link';
-import { Beer } from '@/app/models/beer.model';
 import { GetBeers } from '@/app/services/beer.service';
 
+import styles from './page.module.scss';
+import BeerAccordion from '@/app/beers-list/components/beer-accordion';
+
+// TODO implement lazy loading or beers
 export default async function BeersListPage() {
-    const beers = await GetBeers();
+    const beers = await GetBeers({});
 
     return (
-        <div>
-            <h1>Beers</h1>
+        <div className={styles.beersListPage}>
+            <h1 className={styles.beersListPageTitle}>List of beers</h1>
 
-            <div>
+            <div className={styles.beersListPageContent}>
                 {beers?.map((beer) => (
-                    <BeerCard key={beer.id} beer={beer} />
+                    <BeerAccordion key={beer.id} beer={beer} />
                 ))}
             </div>
         </div>
-    );
-}
-
-function BeerCard({ beer }: { beer: Beer }) {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const { id, name, tagline, first_brewed } = beer || {};
-
-    return (
-        <Link href={`/beers/${id}`}>
-            <div>
-                <h2>{name}</h2>
-                <h5>{tagline}</h5>
-                <p>{first_brewed}</p>
-            </div>
-        </Link>
     );
 }

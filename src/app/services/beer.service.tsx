@@ -1,8 +1,16 @@
 import { Beer } from '@/app/models/beer.model';
 
-export async function GetBeers() {
+export async function GetBeers({
+    page,
+    perPage,
+}: {
+    page?: number;
+    perPage?: number;
+}) {
     const res = await fetch(
-        'https://api.punkapi.com/v2/beers?page=1&per_page=10',
+        page && perPage
+            ? `https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}`
+            : `https://api.punkapi.com/v2/beers`,
         { cache: 'no-store' } // Will make a request and not cache it
     );
 
