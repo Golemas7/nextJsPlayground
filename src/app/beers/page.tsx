@@ -2,7 +2,7 @@ import { GetBeers } from '@/app/services/beer.service';
 import BaseCard from '@/app/components/base-card/base-card';
 
 export default async function BeersPage() {
-    const beers = await GetBeers({ page: 1, perPage: 6 });
+    const beers = await GetBeers({ page: 1, perPage: 8 });
 
     return (
         <div>

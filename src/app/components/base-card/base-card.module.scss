@@ -1,1 +1,111 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.base-card {
+  @keyframes animate-beers-in {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+
+    100% {
+      transform: scale(1.8) translateY(-5rem);
+    }
+  }
+
+  @keyframes animate-beers-out {
+    0% {
+      transform: scale(1.8) translateY(-5rem);
+    }
+
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes fade-beers-in {
+    0%,
+    99% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  $_this: &;
+  $_padding-inner: 1.6rem;
+
+  align-items: center;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-name: fade-beers-in;
+  border-radius: utils.$base-border-radius;
+  border: 0.1rem solid utils.$color-primary;
+  display: flex;
+  flex-direction: row;
+  max-width: 45rem;
+  position: relative;
+
+  &:active,
+  &:hover {
+    #{$_this}__image {
+      animation-name: animate-beers-in;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
+
+    #{$_this}__title,
+    #{$_this}__content,
+    #{$_this}__additional-text {
+      color: utils.$color-focus;
+    }
+
+    #{$_this}__additional-text {
+      font-weight: utils.$font-weight-bold;
+    }
+
+    background-color: utils.$color-primary;
+  }
+
+  &__inner-container {
+    display: flex;
+    flex-direction: column;
+    padding: $_padding-inner;
+  }
+
+  &__image-container {
+    align-items: center;
+    background-color: utils.$color-focus;
+    border-radius: utils.$base-border-radius 0 0 utils.$base-border-radius;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 20rem;
+    overflow: hidden;
+  }
+
+  &__image {
+    object-fit: contain;
+    padding: $_padding-inner;
+    animation-name: animate-beers-out;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+
+  &__title,
+  &__content,
+  &__additional-text {
+    align-self: flex-start;
+    color: utils.$color-primary;
+  }
+
+  &__title {
+    font-size: utils.$font-size-lg-xl;
+  }
+
+  &__additional-text {
+    bottom: $_padding-inner;
+    justify-self: flex-end;
+    position: absolute;
+  }
+}
