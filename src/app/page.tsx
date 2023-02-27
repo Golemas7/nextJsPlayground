@@ -40,6 +40,14 @@ export default function Home() {
                     height="250"
                 />
             </div>
+            <Image
+                data-testid="watermark"
+                className={styles.homePageWatermark}
+                src="/static/beer-stamp.jpg"
+                alt="A beer stamp with the text premium craft beer."
+                height="500"
+                width="500"
+            />
         </div>
     );
 }

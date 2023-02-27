@@ -1,33 +1,87 @@
 @use '../../../styles/utils/index' as utils;
 
 .base-link {
+  @keyframes animate-underline {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+
   $_this: &;
+
+  color: utils.$color-primary;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: utils.$font-primary;
+  font-size: utils.$base-font-size;
+  letter-spacing: utils.$letter-spacing-md;
+  line-height: 1.15;
+  text-decoration: none;
+  width: max-content;
+
+  &:focus {
+    outline: utils.$color-black solid auto;
+  }
+
+  &:active,
+  &:hover {
+    color: utils.$color-primary;
+
+    #{$_this}__arrow-icon {
+      margin-left: 1.6rem;
+    }
+
+    #{$_this}__content {
+      &::after {
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
+        animation-name: animate-underline;
+      }
+    }
+  }
+
+  &__arrow-icon {
+    margin-left: 1.2rem;
+  }
+
+  &__content {
+    &::after {
+      background-color: utils.$color-primary;
+      content: '';
+      display: block;
+      height: 0.2rem;
+      position: relative;
+      top: 0.15rem;
+      width: 0;
+    }
+  }
 
   &--small {
     font-size: utils.$font-size-s;
   }
 
   &--large {
-    font-size: utils.$font-size-lg-xl;
+    font-size: utils.$font-size-md-lg;
   }
 
   &--as-button {
     @include utils.base-button-styles;
 
-    &:focus {
-      outline: utils.$color-black solid auto;
-    }
-
-    &:active,
-    &:hover {
-      background-color: utils.$color-focus;
-      border-color: utils.$color-primary;
-      color: utils.$color-primary;
-    }
-
-    #{$_this}--large {
+    &#{$_this}--large {
       border-radius: 0.9rem;
       padding: 1.2rem;
+      font-size: utils.$font-size-lg-xl;
+    }
+
+    #{$_this}__content {
+      &::after {
+        display: none;
+      }
     }
   }
 }

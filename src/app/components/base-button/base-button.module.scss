@@ -3,24 +3,6 @@
 .base-button {
   @include utils.base-button-styles;
 
-  &:focus {
-    outline: utils.$color-black solid auto;
-  }
-
-  &:active,
-  &:hover {
-    background-color: utils.$color-focus;
-    border-color: utils.$color-primary;
-    color: utils.$color-primary;
-  }
-
-  &:disabled {
-    background-color: utils.$color-grey-850;
-    border-color: utils.$color-grey-850;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
   &--small {
     font-size: utils.$font-size-s;
   }

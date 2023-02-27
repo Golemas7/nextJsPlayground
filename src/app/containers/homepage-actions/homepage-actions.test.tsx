@@ -26,7 +26,7 @@ describe('HomepageActions', () => {
     it('Should render a secondary CTA', () => {
         render(<HomepageActions className="" />);
 
-        const secondaryAction = screen.getByTestId('secondaryAction');
+        const secondaryAction = screen.getByText('Explore all the details');
 
         expect(secondaryAction).toBeInTheDocument();
     });
@@ -39,29 +39,5 @@ describe('HomepageActions', () => {
         const container = screen.getByTestId('homepageActionsContainer');
 
         expect(container).toHaveClass(className);
-    });
-
-    it('Should call react router on primary CTA click', () => {
-        const useRouter = jest.spyOn(require('next/navigation'), 'useRouter');
-
-        render(<HomepageActions className="" />);
-
-        const primaryAction = screen.getByText('Choose a beer!');
-
-        primaryAction.click();
-
-        expect(useRouter).toHaveBeenCalled();
-    });
-
-    it('Should call react router on secondary CTA click', () => {
-        const useRouter = jest.spyOn(require('next/navigation'), 'useRouter');
-
-        render(<HomepageActions className="" />);
-
-        const secondaryAction = screen.getByTestId('secondaryAction');
-
-        secondaryAction.click();
-
-        expect(useRouter).toHaveBeenCalled();
     });
 });

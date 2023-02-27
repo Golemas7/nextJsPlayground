@@ -45,7 +45,11 @@ describe('BaseLink', () => {
     });
 
     it('Should add base-link--as-button class if asButton is true', () => {
-        render(<BaseLink href="">Test Content</BaseLink>);
+        render(
+            <BaseLink href="" asButton={true}>
+                Test Content
+            </BaseLink>
+        );
 
         const link = screen.getByRole('link', { name: 'Test Content' });
 
@@ -74,5 +78,29 @@ describe('BaseLink', () => {
         const link = screen.getByRole('link', { name: 'Test Content' });
 
         expect(link).toHaveClass('baseLinkLarge');
+    });
+
+    it('Should render arrow icon', () => {
+        render(
+            <BaseLink href="" size="large">
+                Test Content
+            </BaseLink>
+        );
+
+        const arrowIcon = screen.getByTestId('arrowIcon');
+
+        expect(arrowIcon).toBeInTheDocument();
+    });
+
+    it('Should not render arrow icon if asButton is true', () => {
+        render(
+            <BaseLink href="" size="large" asButton={true}>
+                Test Content
+            </BaseLink>
+        );
+
+        const arrowIcon = screen.queryByTestId('arrowIcon');
+
+        expect(arrowIcon).not.toBeInTheDocument();
     });
 });

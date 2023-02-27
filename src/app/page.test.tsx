@@ -55,4 +55,12 @@ describe('page', () => {
 
         expect(accentImage2).toBeInTheDocument();
     });
+
+    it('Should render a watermark', () => {
+        render(<Home />);
+
+        const watermark = screen.getByTestId('watermark');
+
+        expect(watermark).toBeInTheDocument();
+    });
 });

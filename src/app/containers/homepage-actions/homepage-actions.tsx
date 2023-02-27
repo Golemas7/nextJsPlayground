@@ -1,36 +1,31 @@
-'use client';
-
-import styles from '@/app/page.module.scss';
-import BaseButton from '@/app/components/base-button/base-button';
-import { useRouter } from 'next/navigation';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
-
-export const handleOnClick = (
-    $event: React.MouseEvent<unknown>,
-    router: AppRouterInstance
-) => {
-    $event.stopPropagation();
-
-    router.push('/beers');
-};
+import styles from './homepage-actions.module.scss';
+import BaseLink from '@/app/components/base-link/base-link';
 
 export default function HomepageActions({ className }: { className: string }) {
-    const router = useRouter();
-
     return (
         <div
             data-testid="homepageActionsContainer"
-            className={className ? className : ''}
+            className={`${styles.homepageActions} ${
+                className ? className : ''
+            }`}
         >
-            <BaseButton
+            <BaseLink
                 data-testid="primaryAction"
-                className={styles.homePageButton}
-                title="Beer overview"
+                className={styles.homepageActionsAction}
+                href="/beers"
+                asButton={true}
                 size="large"
-                onClick={($event) => handleOnClick($event, router)}
             >
                 Choose a beer!
-            </BaseButton>
+            </BaseLink>
+            <BaseLink
+                data-testid="secondaryAction"
+                className={styles.homepageActionsAction}
+                href="/beers-list"
+                size="large"
+            >
+                Explore all the details
+            </BaseLink>
         </div>
     );
 }

@@ -1,1 +1,10 @@
-// Placeholder
+.homepage-actions {
+  align-items: flex-end;
+  display: flex;
+
+  &__action {
+    &:not(:last-child) {
+      margin-right: 8.5rem;
+    }
+  }
+}

@@ -3,6 +3,7 @@
 .home-page {
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   &__title {
     font-family: utils.$font-secondary;
@@ -46,5 +47,16 @@
 
   &__actions {
     margin-top: 8rem;
+  }
+
+  &__watermark {
+    height: 29rem;
+    left: -42rem;
+    object-fit: cover;
+    object-position: 0 2rem;
+    opacity: 0.02;
+    position: absolute;
+    top: 66rem;
+    width: 109rem;
   }
 }

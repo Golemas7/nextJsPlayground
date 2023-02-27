@@ -17,4 +17,22 @@
   padding: 1rem;
   text-decoration: none;
   width: max-content;
+
+  &:focus {
+    outline: colors.$color-black solid auto;
+  }
+
+  &:active,
+  &:hover {
+    background-color: colors.$color-focus;
+    border-color: colors.$color-primary;
+    color: colors.$color-primary;
+  }
+
+  &:disabled {
+    background-color: colors.$color-grey-850;
+    border-color: colors.$color-grey-850;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

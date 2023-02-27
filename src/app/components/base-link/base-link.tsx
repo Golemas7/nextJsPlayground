@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import ArrowLong from '../../../assets/svg/arrow-long.svg';
 
 import styles from './base-link.module.scss';
 
@@ -27,7 +28,13 @@ export default function BaseLink({
             } ${className ? className : ''}`}
             href={href}
         >
-            {children}
+            <span className={styles.baseLinkContent}>{children}</span>
+            {!asButton && (
+                <ArrowLong
+                    data-testid="arrowIcon"
+                    className={styles.baseLinkArrowIcon}
+                />
+            )}
         </Link>
     );
 }
