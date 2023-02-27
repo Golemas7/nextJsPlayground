@@ -32,7 +32,7 @@ export default function BaseAccordion({
                 asLink={true}
                 onClick={($event) => onClick($event)}
             >
-                <h3>{title}</h3>
+                <h3 className={styles.baseAccordionTitle}>{title}</h3>
                 <Chevron
                     data-testid="chevron"
                     className={`${styles.baseAccordionChevron} ${

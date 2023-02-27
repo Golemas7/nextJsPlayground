@@ -1,1 +1,7 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.beer-accordion {
+  &__first-brewed {
+    font-size: utils.$font-size-s;
+  }
+}

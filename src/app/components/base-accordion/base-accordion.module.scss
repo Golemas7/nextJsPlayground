@@ -40,9 +40,14 @@
     }
   }
 
+  &__title {
+    text-align: left;
+  }
+
   &__chevron {
     font-size: utils.$font-size-lg;
     transform: rotateZ(90deg);
+    margin-left: 2rem;
 
     &--open {
       animation-duration: 0.25s;

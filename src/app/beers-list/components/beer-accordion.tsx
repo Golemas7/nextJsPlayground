@@ -1,6 +1,8 @@
 import { Beer } from '@/app/models/beer.model';
 import BaseAccordionContainer from '@/app/containers/base-accordion-container/base-accordion-container';
 
+import styles from './beer-accordion.module.scss';
+
 export default function BeerAccordion({
     beer,
     initialState,
@@ -17,11 +19,15 @@ export default function BeerAccordion({
     } = beer || {};
 
     return (
-        <BaseAccordionContainer title={name} initialState={initialState}>
+        <BaseAccordionContainer
+            className={styles.beerAccordion}
+            title={name}
+            initialState={initialState}
+        >
             <div>
                 <h4>{tagline}</h4>
                 <p>{description}</p>
-                <p>
+                <p className={styles.beerAccordionFirstBrewed}>
                     First brewed: <strong>{firstBrewed}</strong>
                 </p>
             </div>

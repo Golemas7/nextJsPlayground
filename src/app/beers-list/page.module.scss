@@ -1,6 +1,8 @@
 @use '../../styles/utils/index' as utils;
 
 .beers-list-page {
+  position: relative;
+
   &__title {
     font-family: utils.$font-secondary;
     font-size: utils.$font-size-xxxl;
@@ -9,5 +11,15 @@
   &__content {
     margin: 8rem 0;
     max-width: 60rem;
+  }
+
+  &__watermark {
+    height: 97rem;
+    object-fit: cover;
+    opacity: 0.02;
+    position: fixed;
+    right: -28rem;
+    top: 5rem;
+    width: 123rem;
   }
 }

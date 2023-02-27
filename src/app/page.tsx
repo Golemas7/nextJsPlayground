@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import HomepageActions from './containers/homepage-actions/homepage-actions';
 
+// TODO make responsive
+
 export default function Home() {
     return (
         <div className={styles.homePage}>
