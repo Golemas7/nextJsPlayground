@@ -41,15 +41,21 @@ describe('BaseButton', () => {
     });
 
     it('Should attach a given class to the component', () => {
+        const className = 'test-class';
+
         render(
-            <BaseButton title="Test" onClick={onClickMock}>
+            <BaseButton
+                className={className}
+                title="Test"
+                onClick={onClickMock}
+            >
                 Test Content
             </BaseButton>
         );
 
         const button = screen.getByRole('button', { name: 'Test Content' });
 
-        expect(button).toBeInTheDocument();
+        expect(button).toHaveClass(className);
     });
 
     it('Should add base-button--small class if size is passed as small', () => {
