@@ -15,34 +15,64 @@ jest.mock('next/navigation', () => ({
 
 describe('BaseLink', () => {
     it('Should render the link', () => {
-        render(<BaseLink>Test</BaseLink>);
+        render(<BaseLink href="">Test</BaseLink>);
 
-        const button = screen.getByRole('link');
+        const link = screen.getByRole('link');
 
-        expect(button).toBeInTheDocument();
+        expect(link).toBeInTheDocument();
     });
 
     it('Should render passed link content', () => {
-        render(<BaseLink>Test Content</BaseLink>);
+        render(<BaseLink href="">Test Content</BaseLink>);
 
-        const button = screen.getByRole('link', { name: 'Test Content' });
+        const link = screen.getByRole('link', { name: 'Test Content' });
 
-        expect(button).toBeInTheDocument();
+        expect(link).toBeInTheDocument();
     });
 
     it('Should attach a given class to the component', () => {
-        render(<BaseLink>Test Content</BaseLink>);
+        const classToAttach = 'test-class';
 
-        const button = screen.getByRole('link', { name: 'Test Content' });
+        render(
+            <BaseLink href="" className={classToAttach}>
+                Test Content
+            </BaseLink>
+        );
 
-        expect(button).toBeInTheDocument();
+        const link = screen.getByRole('link', { name: 'Test Content' });
+
+        expect(link).toHaveClass(classToAttach);
     });
 
-    it('Should add base-link--as-button class if as button is true', () => {
-        render(<BaseLink>Test Content</BaseLink>);
+    it('Should add base-link--as-button class if asButton is true', () => {
+        render(<BaseLink href="">Test Content</BaseLink>);
 
-        const button = screen.getByRole('button', { name: 'Test Content' });
+        const link = screen.getByRole('link', { name: 'Test Content' });
 
-        expect(button).toHaveClass('baseButtonSmall');
+        expect(link).toHaveClass('baseLinkAsButton');
+    });
+
+    it('Should add base-link--small class if size is small', () => {
+        render(
+            <BaseLink href="" size="small">
+                Test Content
+            </BaseLink>
+        );
+
+        const link = screen.getByRole('link', { name: 'Test Content' });
+
+        expect(link).toHaveClass('baseLinkSmall');
+    });
+
+    it('Should add base-link--large class if size is large', () => {
+        render(
+            <BaseLink href="" size="large">
+                Test Content
+            </BaseLink>
+        );
+
+        const link = screen.getByRole('link', { name: 'Test Content' });
+
+        expect(link).toHaveClass('baseLinkLarge');
     });
 });

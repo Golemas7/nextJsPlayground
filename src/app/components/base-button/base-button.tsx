@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
 import styles from './base-button.module.scss';
-
-export type BaseButtonSizes = 'small' | 'medium' | 'large';
+import { BaseButtonSizes } from '@/app/core/types/base-button.types';
 
 export default function BaseButton({
     children,

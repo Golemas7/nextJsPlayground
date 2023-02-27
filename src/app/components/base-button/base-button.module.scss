@@ -1,20 +1,7 @@
 @use '../../../styles/utils/index' as utils;
 
 .base-button {
-  background-color: utils.$color-primary;
-  border: 0.1rem solid utils.$color-primary;
-  border-radius: utils.$base-border-radius;
-  color: utils.$color-white;
-  cursor: pointer;
-  display: block;
-  font-family: utils.$font-primary;
-  font-size: utils.$base-font-size;
-  font-weight: utils.$font-weight-bold;
-  letter-spacing: utils.$letter-spacing-md;
-  line-height: 1.15;
-  padding: 1rem;
-  text-decoration: none;
-  width: max-content;
+  @include utils.base-button-styles;
 
   &:focus {
     outline: utils.$color-black solid auto;

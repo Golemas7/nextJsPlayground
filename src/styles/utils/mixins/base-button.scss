@@ -1,0 +1,20 @@
+@use '../variables/colors' as colors;
+@use '../variables/typography' as typography;
+@use '../variables/global' as global;
+
+@mixin base-button-styles() {
+  background-color: colors.$color-primary;
+  border: 0.1rem solid colors.$color-primary;
+  border-radius: global.$base-border-radius;
+  color: colors.$color-white;
+  cursor: pointer;
+  display: block;
+  font-family: typography.$font-primary;
+  font-size: typography.$base-font-size;
+  font-weight: typography.$font-weight-bold;
+  letter-spacing: typography.$letter-spacing-md;
+  line-height: 1.15;
+  padding: 1rem;
+  text-decoration: none;
+  width: max-content;
+}

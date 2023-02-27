@@ -1,1 +1,33 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.base-link {
+  $_this: &;
+
+  &--small {
+    font-size: utils.$font-size-s;
+  }
+
+  &--large {
+    font-size: utils.$font-size-lg-xl;
+  }
+
+  &--as-button {
+    @include utils.base-button-styles;
+
+    &:focus {
+      outline: utils.$color-black solid auto;
+    }
+
+    &:active,
+    &:hover {
+      background-color: utils.$color-focus;
+      border-color: utils.$color-primary;
+      color: utils.$color-primary;
+    }
+
+    #{$_this}--large {
+      border-radius: 0.9rem;
+      padding: 1.2rem;
+    }
+  }
+}
