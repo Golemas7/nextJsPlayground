@@ -14,7 +14,7 @@ jest.mock('next/navigation', () => ({
 }));
 
 describe('page', () => {
-    it('Should renders a title', () => {
+    it('Should render a title', () => {
         render(<Home />);
 
         const heading = screen.getByRole('heading', {

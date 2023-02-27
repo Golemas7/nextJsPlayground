@@ -1,7 +1,13 @@
 import { Beer } from '@/app/models/beer.model';
 import BaseAccordionContainer from '@/app/containers/base-accordion-container/base-accordion-container';
 
-export default function BeerAccordion({ beer }: { beer: Beer }) {
+export default function BeerAccordion({
+    beer,
+    initialState,
+}: {
+    beer: Beer;
+    initialState?: boolean;
+}) {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const {
         name,
@@ -11,7 +17,7 @@ export default function BeerAccordion({ beer }: { beer: Beer }) {
     } = beer || {};
 
     return (
-        <BaseAccordionContainer title={name}>
+        <BaseAccordionContainer title={name} initialState={initialState}>
             <div>
                 <h4>{tagline}</h4>
                 <p>{description}</p>

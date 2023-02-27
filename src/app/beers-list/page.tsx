@@ -8,7 +8,7 @@ export default async function BeersListPage() {
     const beers = await GetBeers({});
 
     return (
-        <div className={styles.beersListPage}>
+        <div data-testid="pageContainer" className={styles.beersListPage}>
             <h1 className={styles.beersListPageTitle}>List of beers</h1>
 
             <div className={styles.beersListPageContent}>
