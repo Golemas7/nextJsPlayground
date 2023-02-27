@@ -5,4 +5,4 @@ export default {
     component: BaseLink,
 };
 
-export const baseLink = () => <BaseLink>Content</BaseLink>;
+export const baseLink = () => <BaseLink href="/">Content</BaseLink>;
