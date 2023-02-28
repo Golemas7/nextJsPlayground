@@ -10,6 +10,14 @@ export default async function BeersPage() {
         <div className={styles.beersPage}>
             <h1 className={styles.beersPageTitle}>Beers</h1>
 
+            <div>
+                <label>Sort by:</label>
+                <select>
+                    <option value="null">Select</option>
+                    <option value="abv">Alcohol content</option>
+                </select>
+            </div>
+
             <div className={styles.beersPageCards}>
                 {beers?.map((beer) => (
                     <BaseCard
