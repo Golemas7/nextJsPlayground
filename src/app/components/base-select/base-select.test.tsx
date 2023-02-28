@@ -11,6 +11,14 @@ describe('BaseSelect', () => {
         expect(select).toBeInTheDocument();
     });
 
+    it('Should render the label', () => {
+        render(<BaseSelect />);
+
+        const label = screen.getByRole('label');
+
+        expect(label).toBeInTheDocument();
+    });
+
     it('Should render the passed options into select', () => {
         render(<BaseSelect />);
 
