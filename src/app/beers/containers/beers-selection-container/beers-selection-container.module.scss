@@ -1,0 +1,27 @@
+@use '../../../../styles/utils/index' as utils;
+
+.sorting-container {
+  display: flex;
+  padding: 1.6rem 0;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 1.6rem;
+    }
+  }
+}
+
+.page-cards {
+  column-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 2rem;
+
+  @include utils.respond-to(utils.$breakpoint-desktop, max) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,51 +1,33 @@
 'use client';
 
-import BaseSelectContainer from '@/app/containers/base-select-container/base-select-container';
-import styles from '@/app/beers/page.module.scss';
+import styles from './beers-selection-container.module.scss';
 import BaseCard from '@/app/components/base-card/base-card';
 import { useState } from 'react';
 import { Beers } from '@/app/models/beer.model';
 
 import useSWR from 'swr';
-import { BaseSelectOptions } from '@/app/models/base-select-option.model';
 import { SortDirections } from '@/app/core/enums/sort-directions.enum';
 import {
     BeerSortOptions,
     updateSort,
-} from '@/app/beers/containers/beers-selection-container/functions/beer-sort-functions';
-
-const options: BaseSelectOptions = [
-    {
-        name: 'Alcohol content',
-        value: BeerSortOptions.abv,
-    },
-    {
-        name: 'Name',
-        value: BeerSortOptions.name,
-    },
-];
-
-const directionOptions = [
-    {
-        name: 'Ascending',
-        value: SortDirections.asc,
-    },
-    {
-        name: 'Descending',
-        value: SortDirections.dsc,
-    },
-];
+} from '@/app/beers/functions/beer-sort-functions';
+import BaseButton from '@/app/components/base-button/base-button';
+import BaseSelect from '@/app/components/base-select/base-select';
+import { directionOptions, options } from '@/app/beers/data/beer-options';
+import { BeersSortData } from '@/app/beers/models/beers-sort-data.model';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function BeersSelectionContainer() {
-    const [selectedSort, setSelectedSort] = useState<BeerSortOptions>(
-        BeerSortOptions.null
-    );
-    const [selectedSortDirection, setSelectedSortDirection] =
-        useState<SortDirections>(SortDirections.asc);
+    const initialSort = {
+        sortKey: BeerSortOptions.null,
+        sortDirection: SortDirections.asc,
+    };
+
+    const [sort, setSort] = useState<BeersSortData>(initialSort);
     const [sortedData, setSortedData] = useState<Beers | null>(null);
 
+    // Gets the data from the API
     const { data, mutate } = useSWR(
         'https://api.punkapi.com/v2/beers?page=1&per_page=8',
         fetcher
@@ -54,6 +36,7 @@ export default function BeersSelectionContainer() {
         mutate: (data: () => Beers, reRender: boolean) => void;
     };
 
+    // When the data is ready from the API, set sortedData to received data
     const updateSortedData = (beersData: Beers, sortedBeersData: Beers) => {
         mutate(() => {
             setSortedData(sortedBeersData);
@@ -62,46 +45,57 @@ export default function BeersSelectionContainer() {
         }, false);
     };
 
-    const sort = (
-        sortValue: BeerSortOptions,
-        sortDirection: SortDirections
-    ) => {
-        updateSort(
-            data,
-            sortValue,
-            sortDirection,
-            setSelectedSort,
-            setSelectedSortDirection,
-            updateSortedData
-        );
+    // Sort the data
+    const sortTheData = (newSort: BeersSortData) => {
+        setSort(newSort);
+
+        updateSort(data, newSort, updateSortedData);
     };
 
     return (
         <>
-            <div>
-                <BaseSelectContainer
+            <div className={styles.sortingContainer}>
+                <BaseSelect
+                    className={styles.sortingContainerItem}
                     id="sortBy"
                     label="Sort by: "
-                    initialValue={selectedSort}
+                    value={sort.sortKey}
                     options={options}
-                    onChange={($event, value) =>
-                        sort(Number.parseInt(value, 10), selectedSortDirection)
+                    onChange={($event) =>
+                        sortTheData({
+                            sortKey: parseInt($event?.target?.value, 10),
+                            sortDirection: sort.sortDirection,
+                        })
                     }
                 />
 
-                <BaseSelectContainer
+                <BaseSelect
+                    className={styles.sortingContainerItem}
                     id="sortDirection"
                     label="Direction: "
-                    initialValue={selectedSortDirection}
+                    value={sort.sortDirection}
                     hasEmptyValue={false}
                     options={directionOptions}
-                    onChange={($event, value) =>
-                        sort(selectedSort, Number.parseInt(value, 10))
+                    onChange={($event) =>
+                        sortTheData({
+                            sortKey: sort.sortKey,
+                            sortDirection: parseInt($event?.target?.value, 10),
+                        })
                     }
                 />
+
+                <BaseButton
+                    title="Reset sort"
+                    onClick={() => sortTheData(initialSort)}
+                >
+                    Reset
+                </BaseButton>
             </div>
 
-            <div key={selectedSort} className={styles.beersPageCards}>
+            <div
+                key={sort.sortKey.toString() + sort.sortDirection.toString()}
+                className={styles.pageCards}
+            >
                 {(sortedData ?? data)?.map((beer) => (
                     <BaseCard
                         key={beer.id}

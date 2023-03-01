@@ -57,7 +57,10 @@ describe('BaseSelect', () => {
 
         const options = screen.queryAllByTestId('option');
 
-        expect(options).toEqual(dataMock.options);
+        const optionsValues = options.map((item) => item.getAttribute('value'));
+        const optionsToCompare = dataMock.options.map((item) => item.value);
+
+        expect(optionsValues).toEqual(optionsToCompare);
     });
 
     it('Should attach a given class to the component', () => {

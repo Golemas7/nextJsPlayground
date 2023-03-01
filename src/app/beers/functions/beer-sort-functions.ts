@@ -1,6 +1,6 @@
 import { Beer, Beers } from '@/app/models/beer.model';
 import { SortDirections } from '@/app/core/enums/sort-directions.enum';
-import { Dispatch, SetStateAction } from 'react';
+import { BeersSortData } from '@/app/beers/models/beers-sort-data.model';
 
 export enum BeerSortOptions {
     'abv',
@@ -34,29 +34,25 @@ const sortBeersByName = (a: Beer, b: Beer) => {
 
 export const updateSort = (
     data: Beers,
-    value: BeerSortOptions,
-    direction: SortDirections,
-    setSelectedSort: Dispatch<SetStateAction<BeerSortOptions>>,
-    setSelectedSortDirection: Dispatch<SetStateAction<SortDirections>>,
+    newSort: BeersSortData,
     callbackFn: (data: Beers, sortedBeerData: Beers) => void
 ) => {
-    setSelectedSort(value);
-    setSelectedSortDirection(direction);
+    const { sortKey, sortDirection } = newSort;
 
     let sortedBeerData: Beers;
 
     switch (true) {
-        case value === BeerSortOptions.abv:
+        case sortKey === BeerSortOptions.abv:
             sortedBeerData = [...data].sort(sortBeersByAbv);
             break;
-        case value === BeerSortOptions.name:
+        case sortKey === BeerSortOptions.name:
             sortedBeerData = [...data].sort(sortBeersByName);
             break;
         default:
             sortedBeerData = [...data];
     }
 
-    if (direction === SortDirections.dsc) {
+    if (sortDirection === SortDirections.dsc) {
         sortedBeerData = [...sortedBeerData].reverse();
     }
 
