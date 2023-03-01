@@ -3,17 +3,31 @@
 .sorting-container {
   align-items: flex-end;
   display: flex;
-  padding: 1.6rem 0;
+  max-width: 93rem;
+  padding-bottom: 5rem;
+
+  @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   &__item {
     &:not(:last-child) {
       margin-right: 1.6rem;
+
+      @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
+        margin-right: 0;
+        margin-bottom: 1.6rem;
+      }
     }
+  }
+
+  &__button {
+    margin-top: 1.6rem;
   }
 }
 
 .page-cards {
-  border-top: utils.$base-border-height solid utils.$color-grey-550;
   column-gap: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -27,4 +41,8 @@
   @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.load-more {
+  margin-top: 5rem;
 }

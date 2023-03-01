@@ -93,4 +93,28 @@ describe('BaseButton', () => {
 
         expect(button).toHaveClass('baseButtonLarge');
     });
+
+    it('Should add base-button--full-width class if full width is true', () => {
+        render(
+            <BaseButton title="Test" fullWidth={true} onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
+
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveClass('baseButtonFullWidth');
+    });
+
+    it('Should add disabled attribute if isDisabled is true', () => {
+        render(
+            <BaseButton title="Test" isDisabled={true} onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
+
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveAttribute('disabled');
+    });
 });

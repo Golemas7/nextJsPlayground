@@ -33,9 +33,9 @@ const sortBeersByName = (a: Beer, b: Beer) => {
 };
 
 export const updateSort = (
-    data: Beers,
+    currentSortedData: Beers,
     newSort: BeersSortData,
-    callbackFn: (data: Beers, sortedBeerData: Beers) => void
+    callbackFn: (sortedBeerData: Beers) => void
 ) => {
     const { sortKey, sortDirection } = newSort;
 
@@ -43,18 +43,18 @@ export const updateSort = (
 
     switch (true) {
         case sortKey === BeerSortOptions.abv:
-            sortedBeerData = [...data].sort(sortBeersByAbv);
+            sortedBeerData = [...currentSortedData].sort(sortBeersByAbv);
             break;
         case sortKey === BeerSortOptions.name:
-            sortedBeerData = [...data].sort(sortBeersByName);
+            sortedBeerData = [...currentSortedData].sort(sortBeersByName);
             break;
         default:
-            sortedBeerData = [...data];
+            sortedBeerData = [...currentSortedData];
     }
 
     if (sortDirection === SortDirections.dsc) {
         sortedBeerData = [...sortedBeerData].reverse();
     }
 
-    callbackFn(data, sortedBeerData);
+    callbackFn(sortedBeerData);
 };

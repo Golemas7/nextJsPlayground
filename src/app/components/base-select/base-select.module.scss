@@ -48,7 +48,7 @@
 
     &:focus,
     &:active {
-      @include utils.input-focus(utils.$color-focus);
+      @include utils.input-focus(utils.$color-secondary);
     }
   }
 

@@ -39,4 +39,10 @@
       color: utils.$color-grey-850;
     }
   }
+
+  &--full-width {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
 }
