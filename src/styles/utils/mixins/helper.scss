@@ -24,3 +24,8 @@
   margin: 0;
   padding: 0;
 }
+
+@mixin break-text() {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

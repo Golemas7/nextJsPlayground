@@ -3,6 +3,7 @@
 $page-frame: 144rem; // Standard desktop
 $padding-page-frame: 1.6rem;
 $base-border-radius: 0.6rem;
+$base-border-height: 0.1rem;
 $content-container-width: 80rem;
 $toolbar-height: 5rem;
 
@@ -15,6 +16,12 @@ $breakpoint-tablet-landscape: 1024;
 $breakpoint-desktop: 1440;
 
 $breakpoint-desktop-vertical: 920;
+
+// Form elements
+$input-size: 4.4rem;
+
+// Animations
+$base-animation-duration: 0.15s;
 
 // z-indexes
 $z-index-base: 1;

@@ -25,9 +25,11 @@ export default function BaseButton({
             data-testid={dataTestId}
             className={`${styles.baseButton} ${
                 size === 'small' ? styles.baseButtonSmall : ''
-            } ${size === 'large' ? styles.baseButtonLarge : ''} ${
-                className ? className : ''
-            } ${asLink ? styles.baseButtonAsLink : ''}`}
+            }  ${size === 'medium-large' ? styles.baseButtonMediumLarge : ''} ${
+                size === 'large' ? styles.baseButtonLarge : ''
+            } ${className ? className : ''} ${
+                asLink ? styles.baseButtonAsLink : ''
+            }`}
             title={title}
             onClick={($event) => onClick($event)}
         >

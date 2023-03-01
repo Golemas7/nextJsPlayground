@@ -72,4 +72,12 @@ describe('BaseSelect', () => {
 
         expect(selectContainer).toHaveClass(classToAttach);
     });
+
+    it('Should render chevron', () => {
+        render(<BaseSelect {...dataMock} />);
+
+        const chevron = screen.getByTestId('chevron');
+
+        expect(chevron).toBeInTheDocument();
+    });
 });

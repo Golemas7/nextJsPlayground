@@ -86,6 +86,7 @@ export default function BeersSelectionContainer() {
 
                 <BaseButton
                     title="Reset sort"
+                    size="medium-large"
                     onClick={() => sortTheData(initialSort)}
                 >
                     Reset

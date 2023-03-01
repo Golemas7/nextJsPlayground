@@ -1,1 +1,65 @@
-// Placeholder
+@use '../../../styles/utils/index' as utils;
+
+.base-select {
+  $_this: &;
+  $_border-size: 0.1rem;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  &__label {
+    font-weight: utils.$font-weight-bold;
+    letter-spacing: utils.$letter-spacing-md;
+    margin-bottom: utils.$font-size-xs;
+  }
+
+  &__select-container {
+    @include utils.break-text;
+
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  &__select {
+    appearance: none;
+    background-color: utils.$color-white;
+    border: $_border-size solid utils.$color-grey-850;
+    border-radius: 0.4rem;
+    color: utils.$color-text-default;
+    cursor: pointer;
+    display: flex;
+    font-family: utils.$font-primary;
+    font-size: utils.$font-size-md;
+    height: utils.$input-size;
+    letter-spacing: utils.$letter-spacing-md;
+    padding: 0 2.8rem 0 1.3rem;
+    text-overflow: ellipsis;
+    width: 100%;
+
+    &:focus {
+      + #{$_this}__icon {
+        transform: rotate(270deg) translateY(50%);
+        transition: transform utils.$base-animation-duration ease-out;
+      }
+    }
+
+    &:focus,
+    &:active {
+      @include utils.input-focus(utils.$color-focus);
+    }
+  }
+
+  &__icon {
+    height: 2.2rem;
+    pointer-events: none;
+    position: absolute;
+    right: 2.3rem;
+    top: 28%;
+    transform: rotate(90deg) translateY(-50%);
+    transition: transform utils.$base-animation-duration ease-out;
+    width: 2.7rem;
+  }
+}

@@ -1,1 +1,1 @@
-export type BaseButtonSizes = 'small' | 'medium' | 'large';
+export type BaseButtonSizes = 'small' | 'medium' | 'medium-large' | 'large';

@@ -70,6 +70,18 @@ describe('BaseButton', () => {
         expect(button).toHaveClass('baseButtonSmall');
     });
 
+    it('Should add base-button--medium-large class if size is passed as medium-large', () => {
+        render(
+            <BaseButton title="Test" size="medium-large" onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
+
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveClass('baseButtonMediumLarge');
+    });
+
     it('Should add base-button--large class if size is passed as large', () => {
         render(
             <BaseButton title="Test" size="large" onClick={onClickMock}>
