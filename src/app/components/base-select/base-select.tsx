@@ -1,4 +1,5 @@
 import { BaseSelectOptions } from '@/app/models/base-select-option.model';
+import { ChangeEvent } from '@/app/models/change.model';
 
 export default function BaseSelect({
     id,
@@ -6,14 +7,18 @@ export default function BaseSelect({
     options,
     value = 'null',
     className,
+    canSelectEmptyValue = true,
+    hasEmptyValue = true,
     onChange,
 }: {
     id: string;
     label: string;
     options: BaseSelectOptions;
-    value: string;
+    value: string | number;
     className?: string;
-    onChange: ($event: React.ChangeEvent<unknown>) => void;
+    canSelectEmptyValue?: boolean;
+    hasEmptyValue?: boolean;
+    onChange: ($event: ChangeEvent) => void;
 }) {
     return (
         <div
@@ -23,15 +28,26 @@ export default function BaseSelect({
             <label data-testid="label" htmlFor={id}>
                 {label}
             </label>
-            <select id={id} value={value} onChange={onChange}>
-                <option data-testid="defaultOption" key="null" value="null">
-                    Select
-                </option>
+            <select
+                id={id}
+                value={value}
+                onChange={($event) => onChange($event)}
+            >
+                {hasEmptyValue && (
+                    <option
+                        data-testid="defaultOption"
+                        key="null"
+                        value="null"
+                        disabled={!canSelectEmptyValue}
+                    >
+                        Select
+                    </option>
+                )}
                 {options.map(({ value: optionValue, name }, index) => (
                     <option
                         data-testid="option"
-                        key={optionValue + index.toString()}
-                        value={value}
+                        key={optionValue.toString() + index.toString()}
+                        value={optionValue}
                     >
                         {name}
                     </option>

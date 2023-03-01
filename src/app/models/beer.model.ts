@@ -1,3 +1,5 @@
+export type Beers = ReadonlyArray<Beer>;
+
 export interface Beer {
     id: number;
     name: string;
