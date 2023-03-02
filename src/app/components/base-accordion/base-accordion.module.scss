@@ -1,6 +1,8 @@
 @use '../../../styles/utils/index' as utils;
 
 .base-accordion {
+  $_this: &;
+
   @keyframes animate-rotation-forward {
     0% {
       transform: rotateZ(90deg);
@@ -21,16 +23,15 @@
     }
   }
 
-  $_this: &;
-
-  border-bottom: 0.1rem solid utils.$color-primary;
+  border-bottom: utils.$base-border-height solid utils.$color-primary;
 
   &:focus {
     outline: utils.$color-black solid auto;
   }
 
   &__heading-row {
-    display: flex;
+    @include utils.flex-display(row);
+
     justify-content: space-between;
     width: 100%;
 
@@ -46,17 +47,17 @@
 
   &__chevron {
     font-size: utils.$font-size-lg;
-    transform: rotateZ(90deg);
     margin-left: 2rem;
+    transform: rotateZ(90deg);
 
     &--open {
-      animation-duration: 0.25s;
+      animation-duration: utils.$base-animation-duration;
       animation-fill-mode: forwards;
       animation-name: animate-rotation-forward;
     }
 
     &--close {
-      animation-duration: 0.25s;
+      animation-duration: utils.$base-animation-duration;
       animation-fill-mode: forwards;
       animation-name: animate-rotation-back;
     }

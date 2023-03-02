@@ -4,8 +4,8 @@
   $_this: &;
   $_border-size: 0.1rem;
 
-  display: flex;
-  flex-direction: column;
+  @include utils.flex-display(column);
+
   position: relative;
   width: 100%;
 
@@ -17,27 +17,26 @@
 
   &__select-container {
     @include utils.break-text;
+    @include utils.flex-display(row);
 
-    display: flex;
     position: relative;
-    width: 100%;
   }
 
   &__select {
+    @include utils.flex-display(row);
+
     appearance: none;
     background-color: utils.$color-white;
+    border-radius: utils.$base-border-radius;
     border: $_border-size solid utils.$color-grey-850;
-    border-radius: 0.4rem;
     color: utils.$color-text-default;
     cursor: pointer;
-    display: flex;
     font-family: utils.$font-primary;
     font-size: utils.$font-size-md;
     height: utils.$input-size;
     letter-spacing: utils.$letter-spacing-md;
     padding: 0 2.8rem 0 1.3rem;
     text-overflow: ellipsis;
-    width: 100%;
 
     &:focus {
       + #{$_this}__icon {

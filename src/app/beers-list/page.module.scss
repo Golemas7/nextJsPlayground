@@ -4,12 +4,11 @@
   position: relative;
 
   &__title {
-    font-family: utils.$font-secondary;
-    font-size: utils.$font-size-xxxl;
+    @include utils.page-title;
   }
 
   &__content {
-    margin: 8rem 0;
+    margin-bottom: 8rem;
     max-width: 60rem;
   }
 

@@ -28,11 +28,13 @@
 }
 
 .page-cards {
-  column-gap: 2rem;
+  $_gap: 2rem;
+
+  column-gap: $_gap;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-top: 1.6rem;
-  row-gap: 2rem;
+  row-gap: $_gap;
 
   @include utils.respond-to(utils.$breakpoint-desktop, max) {
     grid-template-columns: repeat(2, 1fr);

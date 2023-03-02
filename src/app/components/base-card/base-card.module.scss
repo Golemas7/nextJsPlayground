@@ -1,6 +1,10 @@
 @use '../../../styles/utils/index' as utils;
 
 .base-card {
+  $_this: &;
+  $_padding-inner: 1.6rem;
+  $_beer-animation-duration: 0.2s;
+
   @keyframes animate-beers-in {
     0% {
       transform: scale(1) translateY(0);
@@ -32,26 +36,23 @@
     }
   }
 
-  $_this: &;
-  $_padding-inner: 1.6rem;
+  @include utils.flex-display(row);
 
   align-items: center;
-  animation-duration: 0.2s;
+  animation-duration: $_beer-animation-duration;
   animation-fill-mode: forwards;
   animation-name: fade-beers-in;
   border-radius: utils.$base-border-radius;
-  border: 0.1rem solid utils.$color-primary;
-  display: flex;
-  flex-direction: row;
+  border: utils.$base-border-height solid utils.$color-primary;
   overflow: hidden;
   position: relative;
 
   &:active,
   &:hover {
     #{$_this}__image {
-      animation-name: animate-beers-in;
-      animation-duration: 0.2s;
+      animation-duration: $_beer-animation-duration;
       animation-fill-mode: forwards;
+      animation-name: animate-beers-in;
     }
 
     #{$_this}__title,
@@ -68,17 +69,16 @@
   }
 
   &__inner-container {
+    @include utils.flex-display(column);
+
     align-self: flex-start;
-    display: flex;
-    flex-direction: column;
     height: 100%;
     justify-content: space-between;
     padding: $_padding-inner;
   }
 
   &__content-wrapper {
-    display: flex;
-    flex-direction: column;
+    @include utils.flex-display(column);
   }
 
   &__image-container {
@@ -106,11 +106,11 @@
   }
 
   &__image {
+    animation-duration: $_beer-animation-duration;
+    animation-fill-mode: forwards;
+    animation-name: animate-beers-out;
     object-fit: contain;
     padding: $_padding-inner;
-    animation-name: animate-beers-out;
-    animation-duration: 0.2s;
-    animation-fill-mode: forwards;
   }
 
   &__title,

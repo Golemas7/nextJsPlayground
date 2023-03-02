@@ -1,8 +1,8 @@
 @use '../styles/utils/index' as utils;
 
 .content {
-  display: flex;
-  flex-direction: column;
+  @include utils.flex-display(column);
+
   height: 100%;
   justify-content: space-between;
   min-height: 100vh;

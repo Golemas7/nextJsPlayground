@@ -1,6 +1,8 @@
 @use '../../../styles/utils/index' as utils;
 
 .base-link {
+  $_this: &;
+
   @keyframes animate-underline {
     0% {
       width: 0;
@@ -11,12 +13,10 @@
     }
   }
 
-  $_this: &;
-
+  align-items: center;
   color: utils.$color-primary;
   cursor: pointer;
   display: flex;
-  align-items: center;
   font-family: utils.$font-primary;
   font-size: utils.$base-font-size;
   letter-spacing: utils.$letter-spacing-md;

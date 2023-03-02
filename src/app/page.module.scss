@@ -1,15 +1,16 @@
 @use '../styles/utils/index' as utils;
 
 .home-page {
-  display: flex;
+  @include utils.flex-display(row);
+
   justify-content: space-between;
   position: relative;
 
   &__title {
-    font-family: utils.$font-secondary;
+    @include utils.page-title(3.5rem);
+
     font-size: utils.$font-size-presentation;
     font-weight: bold;
-    margin-bottom: 3.5rem;
     margin-top: 20rem;
     max-width: 60rem;
 
@@ -25,8 +26,8 @@
   &__sub-title {
     display: block;
     font-size: utils.$font-size-xl;
-    max-width: 55rem;
     line-height: utils.$line-height-l;
+    max-width: 55rem;
   }
 
   &__column {
@@ -48,10 +49,12 @@
     }
 
     &:last-child {
-      left: -10rem;
+      $_position: -10rem;
+
+      left: $_position;
       object-position: 0 -20rem;
       position: relative;
-      top: -10rem;
+      top: $_position;
     }
 
     @include utils.respond-to(

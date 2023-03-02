@@ -6,7 +6,7 @@
   align-items: center;
   background-color: colors.$color-primary;
   border-radius: global.$base-border-radius;
-  border: 0.1rem solid colors.$color-primary;
+  border: global.$base-border-height solid colors.$color-primary;
   color: colors.$color-white;
   cursor: pointer;
   display: flex;

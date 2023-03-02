@@ -29,3 +29,9 @@
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+
+@mixin page-title($margin-bottom: 8rem) {
+  font-family: variables.$font-secondary;
+  font-size: variables.$font-size-xxxl;
+  margin-bottom: $margin-bottom;
+}

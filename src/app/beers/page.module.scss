@@ -1,10 +1,7 @@
 @use '../../styles/utils/index' as utils;
 
 .beers-page {
-  // TODO move to mixin
   &__title {
-    font-family: utils.$font-secondary;
-    font-size: utils.$font-size-xxxl;
-    margin-bottom: 8rem;
+    @include utils.page-title;
   }
 }

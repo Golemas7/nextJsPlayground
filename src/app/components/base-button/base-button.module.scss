@@ -21,8 +21,8 @@
   &--as-link {
     background: utils.$none;
     border: utils.$none;
-    padding: 0;
     color: utils.$color-primary;
+    padding: 0;
 
     &:focus {
       outline: utils.$color-black solid auto;

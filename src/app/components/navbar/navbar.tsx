@@ -7,6 +7,7 @@ import CloseSvg from '../../../assets/svg/close.svg';
 import styles from './navbar.module.scss';
 
 import { usePathname } from 'next/navigation';
+import { routes } from '@/app/core/constants/routes';
 
 export default function Navbar({
     isMobileMenuOpen,
@@ -32,7 +33,7 @@ export default function Navbar({
                 }`}
             >
                 <div className={`${styles.mainNavCol} ${styles.mainNavColS}`}>
-                    <Link className={styles.mainNavAppLogo} href="/">
+                    <Link className={styles.mainNavAppLogo} href={routes.home}>
                         <Image
                             data-testid="appLogo"
                             src="/logo.png"
@@ -54,9 +55,9 @@ export default function Navbar({
                     >
                         <li className={styles.mainNavListItem}>
                             <Link
-                                href="/"
+                                href={routes.home}
                                 className={`${styles.mainNavLink} ${
-                                    pathName === '/'
+                                    pathName === routes.home
                                         ? styles.mainNavLinkActive
                                         : ''
                                 }`}
@@ -66,9 +67,9 @@ export default function Navbar({
                         </li>
                         <li className={styles.mainNavListItem}>
                             <Link
-                                href="/beers"
+                                href={routes.beers}
                                 className={`${styles.mainNavLink} ${
-                                    pathName === '/beers'
+                                    pathName === routes.beers
                                         ? styles.mainNavLinkActive
                                         : ''
                                 }`}
@@ -78,9 +79,9 @@ export default function Navbar({
                         </li>
                         <li className={styles.mainNavListItem}>
                             <Link
-                                href="/beers-list"
+                                href={routes.beersList}
                                 className={`${styles.mainNavLink} ${
-                                    pathName === '/beers-list'
+                                    pathName === routes.beersList
                                         ? styles.mainNavLinkActive
                                         : ''
                                 }`}
