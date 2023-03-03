@@ -4,49 +4,36 @@ import '@testing-library/jest-dom';
 
 const onClick = jest.fn();
 
+const mockedData = {
+    onClick,
+    isOpen: false,
+    title: 'Test',
+};
+
 describe('BaseAccordion', () => {
     it('Should render the accordion', () => {
-        render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={false}
-                title="Test"
-                wasOpen={false}
-            >
-                Test
-            </BaseAccordion>
-        );
+        render(<BaseAccordion {...mockedData}>Test</BaseAccordion>);
 
         const accordionContainer = screen.getByTestId('accordionContainer');
 
         expect(accordionContainer).toBeInTheDocument();
     });
 
-    it('Should not render passed accordion content if it is not open', () => {
+    it('Should add hidden attribute to accordion content if it is not open', () => {
         render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={false}
-                title="Test"
-                wasOpen={false}
-            >
+            <BaseAccordion {...mockedData} isOpen={false}>
                 Test content
             </BaseAccordion>
         );
 
-        const accordionContent = screen.queryByText('Test content');
+        const accordionContent = screen.getByTestId('accordionContent');
 
-        expect(accordionContent).not.toBeInTheDocument();
+        expect(accordionContent).toHaveAttribute('hidden');
     });
 
     it('Should not render passed accordion content if it is not open', () => {
         render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={true}
-                title="Test"
-                wasOpen={false}
-            >
+            <BaseAccordion {...mockedData} isOpen={true}>
                 Test content
             </BaseAccordion>
         );
@@ -60,13 +47,7 @@ describe('BaseAccordion', () => {
         const className = 'test-class';
 
         render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={false}
-                title="Test"
-                wasOpen={false}
-                className={className}
-            >
+            <BaseAccordion {...mockedData} className={className}>
                 Test
             </BaseAccordion>
         );
@@ -80,12 +61,7 @@ describe('BaseAccordion', () => {
         const title = 'test title';
 
         render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={false}
-                title={title}
-                wasOpen={false}
-            >
+            <BaseAccordion {...mockedData} title={title}>
                 Test
             </BaseAccordion>
         );
@@ -96,16 +72,7 @@ describe('BaseAccordion', () => {
     });
 
     it('Should render the chevron', () => {
-        render(
-            <BaseAccordion
-                onClick={onClick}
-                isOpen={false}
-                title="Test"
-                wasOpen={false}
-            >
-                Test
-            </BaseAccordion>
-        );
+        render(<BaseAccordion {...mockedData}>Test</BaseAccordion>);
 
         const chevron = screen.getByTestId('chevron');
 
@@ -116,12 +83,7 @@ describe('BaseAccordion', () => {
         const clickMock = jest.fn();
 
         render(
-            <BaseAccordion
-                onClick={clickMock}
-                isOpen={false}
-                title="Test"
-                wasOpen={false}
-            >
+            <BaseAccordion {...mockedData} onClick={clickMock}>
                 Test
             </BaseAccordion>
         );

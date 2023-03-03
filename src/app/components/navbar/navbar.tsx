@@ -100,7 +100,7 @@ export default function Navbar({
                 {!isMobileMenuOpen && (
                     <BaseButton
                         title="Open menu"
-                        data-testid="openMenuButton"
+                        dataTestId="openMenuButton"
                         className={styles.mainNavMobileNavContainer}
                         asIcon={true}
                         onClick={($event) => onMobileMenuOpen($event)}
@@ -113,7 +113,7 @@ export default function Navbar({
                     <BaseButton
                         tabindex={1}
                         title="Close menu"
-                        data-testid="closeMenuButton"
+                        dataTestId="closeMenuButton"
                         className={styles.mainNavMobileNavCloseButton}
                         asIcon={true}
                         onClick={($event) => onMobileMenuClose($event)}

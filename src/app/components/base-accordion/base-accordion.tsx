@@ -20,7 +20,7 @@ export default function BaseAccordion({
 }) {
     const contentRef = useRef<HTMLDivElement>(null);
 
-    let isContentHidden: string | undefined;
+    let isContentHidden: boolean | undefined;
     let contentStyle = {
         maxHeight: '0',
     };
@@ -31,11 +31,11 @@ export default function BaseAccordion({
         if (contentElement) {
             const height = `${contentElement.scrollHeight}px`;
 
-            isContentHidden = undefined;
+            isContentHidden = false;
             contentStyle = { ...contentStyle, maxHeight: height };
         }
     } else {
-        isContentHidden = 'until-found';
+        isContentHidden = true;
     }
 
     return (
@@ -60,10 +60,8 @@ export default function BaseAccordion({
             </BaseButton>
 
             <div
-                /* This suppression is needed, because it takes only boolean values, but we want the html property until-found which is a string */
-                /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-                /* @ts-expect-error */
                 hidden={isContentHidden}
+                data-testid="accordionContent"
                 ref={contentRef}
                 style={contentStyle}
                 className={`${styles.baseAccordionContent} ${
