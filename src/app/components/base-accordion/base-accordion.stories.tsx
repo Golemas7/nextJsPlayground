@@ -8,12 +8,7 @@ export default {
 const onClick = () => {};
 
 export const baseAccordion = () => (
-    <BaseAccordion
-        onClick={onClick}
-        isOpen={false}
-        wasOpen={false}
-        title="Title"
-    >
+    <BaseAccordion onClick={onClick} isOpen={false} title="Title">
         Content
     </BaseAccordion>
 );
