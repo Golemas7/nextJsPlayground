@@ -26,9 +26,12 @@ export default function BeersSelectionContainer() {
     const [sort, setSort] = useState<BeersSortData>(initialSort); // The current sort settings
     const [sortedData, setSortedData] = useState<Beers | null>(null); // The accumulated data which is sorted by current sort settings
     const [unsortedData, setUnsortedData] = useState<Beers | null>(null); // The accumulated data which is not sorted - needed for reset functionality
+    const [isLoading, setIsLoading] = useState<boolean>(true); // Is the data loading
 
     // Gets the data from the API
     useEffect(() => {
+        setIsLoading(true);
+
         void fetch(
             `https://api.punkapi.com/v2/beers?page=${page}&per_page=8`
         ).then((res) =>
@@ -40,6 +43,8 @@ export default function BeersSelectionContainer() {
                     setUnsortedData([...(unsortedData as Beers), ...data]);
                     sortTheData(sort, [...sortedData, ...data]);
                 }
+
+                setIsLoading(false);
             })
         );
     }, [page]);
@@ -133,11 +138,13 @@ export default function BeersSelectionContainer() {
                 ))}
             </div>
 
+            {isLoading && <div>Loading...</div>}
+
             <BaseButton
                 className={styles.loadMore}
                 title="Load more"
                 fullWidth={true}
-                isDisabled={!sortedData}
+                isDisabled={!sortedData || isLoading}
                 onClick={() => setPage(page + 1)}
             >
                 Load more
