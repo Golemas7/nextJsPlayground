@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 
 import Chevron from '../../../assets/svg/shevron.svg';
 import BaseButton from '@/app/components/base-button/base-button';
@@ -9,17 +9,35 @@ export default function BaseAccordion({
     children,
     title,
     isOpen,
-    wasOpen,
     className,
     onClick,
 }: {
     children: ReactNode;
     title: string;
     isOpen: boolean;
-    wasOpen: boolean;
     className?: string;
     onClick: ($event: React.MouseEvent<unknown>) => void;
 }) {
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    let isContentHidden: string | undefined;
+    let contentStyle = {
+        maxHeight: '0',
+    };
+
+    if (isOpen) {
+        const contentElement = contentRef.current;
+
+        if (contentElement) {
+            const height = `${contentElement.scrollHeight}px`;
+
+            isContentHidden = undefined;
+            contentStyle = { ...contentStyle, maxHeight: height };
+        }
+    } else {
+        isContentHidden = 'until-found';
+    }
+
     return (
         <div
             data-testid="accordionContainer"
@@ -37,20 +55,23 @@ export default function BaseAccordion({
                     data-testid="chevron"
                     className={`${styles.baseAccordionChevron} ${
                         isOpen ? styles.baseAccordionChevronOpen : ''
-                    } ${
-                        !isOpen && wasOpen
-                            ? styles.baseAccordionChevronClose
-                            : ''
-                    }`}
+                    } ${!isOpen ? styles.baseAccordionChevronClose : ''}`}
                 />
             </BaseButton>
-            {isOpen && (
-                <div>
-                    <div className={styles.baseAccordionContent}>
-                        {children}
-                    </div>
-                </div>
-            )}
+
+            <div
+                /* This suppression is needed, because it takes only boolean values, but we want the html property until-found which is a string */
+                /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+                /* @ts-expect-error */
+                hidden={isContentHidden}
+                ref={contentRef}
+                style={contentStyle}
+                className={`${styles.baseAccordionContent} ${
+                    isOpen ? styles.baseAccordionContentOpen : ''
+                }`}
+            >
+                {children}
+            </div>
         </div>
     );
 }

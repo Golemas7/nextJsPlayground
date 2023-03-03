@@ -15,13 +15,11 @@ export default function BaseAccordionContainer({
     initialState?: boolean;
 }) {
     const [isAccordionOpen, setIsAccordionOpen] = useState(initialState);
-    const [wasAccordionOpen, setWasAccordionOpen] = useState(initialState);
 
     const handleAccordionClick = ($event: React.MouseEvent<unknown>) => {
         $event.stopPropagation();
 
         setIsAccordionOpen(!isAccordionOpen);
-        setWasAccordionOpen(true);
     };
 
     return (
@@ -29,7 +27,6 @@ export default function BaseAccordionContainer({
             className={className}
             title={title}
             isOpen={isAccordionOpen}
-            wasOpen={wasAccordionOpen}
             onClick={($event) => handleAccordionClick($event)}
         >
             {children}
