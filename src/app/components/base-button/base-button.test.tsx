@@ -106,6 +106,18 @@ describe('BaseButton', () => {
         expect(button).toHaveClass('baseButtonFullWidth');
     });
 
+    it('Should add base-button--as-icon class if asIcon is true', () => {
+        render(
+            <BaseButton title="Test" asIcon={true} onClick={onClickMock}>
+                Test Content
+            </BaseButton>
+        );
+
+        const button = screen.getByRole('button', { name: 'Test Content' });
+
+        expect(button).toHaveClass('baseButtonAsIcon');
+    });
+
     it('Should add disabled attribute if isDisabled is true', () => {
         render(
             <BaseButton title="Test" isDisabled={true} onClick={onClickMock}>

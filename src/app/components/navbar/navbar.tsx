@@ -8,6 +8,7 @@ import styles from './navbar.module.scss';
 
 import { usePathname } from 'next/navigation';
 import { routes } from '@/app/core/constants/routes';
+import BaseButton from '@/app/components/base-button/base-button';
 
 export default function Navbar({
     isMobileMenuOpen,
@@ -97,23 +98,30 @@ export default function Navbar({
                 </div>
 
                 {!isMobileMenuOpen && (
-                    <button
+                    <BaseButton
+                        title="Open menu"
                         data-testid="openMenuButton"
                         className={styles.mainNavMobileNavContainer}
+                        asIcon={true}
                         onClick={($event) => onMobileMenuOpen($event)}
                     >
                         <HamburgerMenuSvg className={styles.mainNavMobileNav} />
-                    </button>
+                    </BaseButton>
                 )}
 
                 {isMobileMenuOpen && (
-                    <button
+                    <BaseButton
+                        tabindex={1}
+                        title="Close menu"
                         data-testid="closeMenuButton"
                         className={styles.mainNavMobileNavCloseButton}
+                        asIcon={true}
                         onClick={($event) => onMobileMenuClose($event)}
                     >
-                        <CloseSvg />
-                    </button>
+                        <CloseSvg
+                            className={styles.mainNavMobileNavCloseButtonIcon}
+                        />
+                    </BaseButton>
                 )}
             </div>
             {isMobileMenuOpen && (

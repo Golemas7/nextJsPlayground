@@ -134,14 +134,15 @@
   &__app-logo {
     @include utils.flex-display(row, true);
 
+    height: utils.$toolbar-height;
     justify-content: flex-start;
-    height: 5rem;
+    max-width: 3rem;
   }
 
   @include utils.respond-to(utils.$breakpoint-tablet-portrait, max) {
     &__mobile-nav {
       display: block;
-      height: 1.4rem;
+      height: utils.$toolbar-height;
       width: $_mobile-nav-icon-width;
     }
 
@@ -153,11 +154,16 @@
     }
 
     &__mobile-nav-close-button {
-      padding: 0.9rem;
+      height: utils.$toolbar-height;
       position: absolute;
       right: 1.3rem;
-      top: 1.4rem;
+      top: 0;
       z-index: utils.$z-index-close-button;
+    }
+
+    &__mobile-nav-close-button-icon {
+      height: utils.$toolbar-height;
+      width: 2.5rem;
     }
 
     &__mobile-backdrop {

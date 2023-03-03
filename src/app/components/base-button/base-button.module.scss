@@ -45,4 +45,15 @@
     text-align: center;
     width: 100%;
   }
+
+  &--as-icon {
+    background: utils.$none;
+    padding: 0;
+
+    &:active,
+    &:hover {
+      background: utils.$none;
+      color: utils.$color-focus;
+    }
+  }
 }
